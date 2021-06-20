@@ -1,5 +1,3 @@
-var models = require('../models/user');
-
 const passport = require('passport');
 var { SERVER } = require('../config/variables');
 var mysql = require('mysql');
@@ -14,8 +12,6 @@ var pool = mysql.createPool({
 });
 
 
-
-
 /* login with passport js */
 exports.loginUser = (req, res, next) => {
     passport.authenticate('user-local', (err, user, info) => {
@@ -25,22 +21,14 @@ exports.loginUser = (req, res, next) => {
         if (!user) {
             res.json({
                 success: false,
-                message: 'email/password not valid'
+                message: 'email/password incorrecte'
             });
-        }
-        if (user.actif == '0') {
-            res.json({
-                success: false,
-                message: 'activer votre compte'
-            });
-            return
         }
         req.logIn(user, (err) => {
             if (err) { return next(err); }
-            const token = jwt.sign({ id: user.id, role: 'agence' }, config.tokenSecretKey);
-            console.log('Success! You are logged in.')
-            req.flash('success', { msg: 'Success! You are logged in.' });
-            res.json({ success: true, message: 'Success! You are logged in', token: token, user: user });
+            const token = jwt.sign({ id: user.id, role: 'user' }, config.tokenSecretKey);
+            req.flash('success', { msg: 'succès vous êtes connecté' });
+            res.json({ success: true, message: 'succès vous êtes connecté', token: token, user: user });
 
         });
     })(req, res, next);
@@ -110,28 +98,56 @@ exports.getUserById = (req, res, next) => {
 exports.newUtilisateur = (req, res) => {
 
     var input = JSON.parse(JSON.stringify(req.body));
-    var body = {
-        email: input.email,
-        prenom: input.prenom,
-        nom: input.nom,
-        password: input.password,
-        phone: input.phone,
-        username: input.username,
-        role: input.role,
-        adresse: input.adresse,
-        cp: input.cp,
-        pays: input.pays,
 
-    };
-    var options = {
-        where: {
-            email: input.email,
 
+    pool.query("SELECT * FROM users", function(err, rows) {
+        if (err) console.log("Error get list : %s", err);
+        /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
+        if (input.avatar) {
+            let avatar = input.avatar.split(';base64,').pop();
+            var avatarName = Date.now() + '.png'
+            fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
+                console.log('File created');
+            });
         }
-    }
 
-    models.users.findAndCountAll().then(data => {
-        console.log(data);
+        var data = {
+            email: input.email,
+            prenom: input.prenom,
+            nom: input.nom,
+            password: input.password,
+            username: input.username,
+            avatar: input.nom ? avatarName : '',
+            role: input.role,
+            adresse: input.adresse,
+            cp: input.cp,
+            pays: input.pays,
 
-    })
+        };
+
+
+
+        pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
+            if (err) {
+                console.log("Error in Inserting Data : %s", err);
+                res.json({
+                    success: false,
+                    message: err
+                });
+            } else {
+                pool.query("SELECT * FROM users", function(err, rows) {
+                    if (err) console.log("Error Editing list : %s", err);
+                    res.json({
+                        utilisateurs: rows,
+                        success: true,
+                        message: 'utilisateur crée avec succes!'
+                    });
+                });
+            }
+        });
+
+
+
+
+    });
 };

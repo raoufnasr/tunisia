@@ -10,6 +10,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitted: boolean = true;
+  message: string;
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -37,7 +38,15 @@ export class LoginComponent implements OnInit {
     }
     const body = this.loginForm.value;
     this.authService.login(body).subscribe(
-      res => { console.log(res) }, err => console.log(err)
+      res => {
+        if (res.success) {
+
+        }
+        else {
+          this.message = res.message;
+        }
+        console.log(res)
+      }, err => console.log(err)
     )
 
   }

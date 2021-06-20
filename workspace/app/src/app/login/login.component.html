@@ -5,13 +5,14 @@
             <div class="form-row">
                 <div>
                     <input type="text" class="form-control inputblc" id="validationServer01" placeholder="Username / Email" formControlName="username" required>
-                    <div *ngIf="isSubmitted && f.username.errors?.required" class="invalid-feedback"> username est obligatoire </div>
                 </div>
                 <div>
                     <input type="password" class="form-control inputblc " id="validationServer02" placeholder="Mot de passe" formControlName="password" required>
                 </div>
             </div>
-            <button class="btn" (click)="login()" type="submit">se connecter</button>
+            <small class="text-danger" *ngIf="isSubmitted">{{message}}</small>
+            <button class="btn" (click)="login()" type="submit" [ngClass]="{'active': loginForm.valid , 'disable': !loginForm.valid}" type="submit">se
+                connecter</button>
         </form>
         <div class="imageBlc">
             <img src="../../../../assets/img/pagelogo.svg">

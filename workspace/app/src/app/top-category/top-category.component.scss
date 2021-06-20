@@ -33,9 +33,12 @@
         .title {
             color: #1aa6c5;
             margin: 0 0 30px;
+            text-transform: capitalize;
+            text-align: center;
         }
         .text {
             color: #636176;
+            text-align: justify;
         }
     }
     &:nth-child(even) {
