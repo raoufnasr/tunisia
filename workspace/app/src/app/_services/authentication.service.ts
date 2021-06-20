@@ -22,4 +22,8 @@ export class AuthenticationService {
       return user;
     }));
   }
+
+  register(data) {
+    return this.http.post<any>(`${this.config.apiUrl}user/register`, data);
+  }
 }

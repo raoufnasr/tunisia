@@ -28,8 +28,6 @@ const categoryRouter = require('./routes/categoryRouter');
 const roleRouter = require('./routes/roleRouter');
 const favorisRouter = require('./routes/favorisRouter');
 
-var expressValidator = require('express-validator');
-
 const passportConfig = require('./config/passport');
 const passport = require('passport');
 

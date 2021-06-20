@@ -1,6 +1,7 @@
 const passport = require('passport');
 const { Strategy: LocalStrategy } = require('passport-local');
-
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 var { SERVER } = require('../config/variables');
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -10,7 +11,7 @@ var pool = mysql.createPool({
     database: SERVER.database
 });
 
-
+var jwt = require('jsonwebtoken');
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -41,9 +42,32 @@ passport.use('user-local', new LocalStrategy({ usernameField: 'username' }, (use
         }
 
         // all is well, return successful user
-       
+
         return done(null, rows[0]);
 
     });
 
 }));
+
+exports.verifyToken = (req, res, next) => {
+    var token = (req.body && req.body.token) || (req.query && req.query.token) || req.headers['authorization'];
+    console.log(req.query);
+    if (token && token.length) {
+        token = token.replace("Bearer ", "");
+        console.log('token', config);
+        console.log('token', token);
+        jwt.verify(token, config.tokenSecretKey.toString('base64'),
+            function(error, decoded) {
+                if (error === null && decoded) {
+                    req.tokend_decoded = decoded;
+                    return next();
+                }
+                console.log(error)
+            }
+        );
+    } else if (req.query.filter) {
+        return next();
+    } else {
+        return res.status(400);
+    }
+}

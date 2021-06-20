@@ -99,7 +99,6 @@ exports.newUtilisateur = (req, res) => {
 
     var input = JSON.parse(JSON.stringify(req.body));
 
-
     pool.query("SELECT * FROM users", function(err, rows) {
         if (err) console.log("Error get list : %s", err);
         /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
@@ -122,11 +121,9 @@ exports.newUtilisateur = (req, res) => {
             adresse: input.adresse,
             cp: input.cp,
             pays: input.pays,
+            ville: input.ville,
 
         };
-
-
-
         pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
             if (err) {
                 console.log("Error in Inserting Data : %s", err);
@@ -145,9 +142,52 @@ exports.newUtilisateur = (req, res) => {
                 });
             }
         });
-
-
-
-
     });
 };
+
+exports.UpdateProfile = (req, res, next) => {
+    var input = JSON.parse(JSON.stringify(req.body));
+    if (req.tokend_decoded.id) {
+        input.id = req.tokend_decoded.id;
+        avatarName = '';
+        if (input.avatar && !input.avatar.includes('.png')) {
+            let avatar = input.avatar.split(';base64,').pop();
+            var avatarName = Date.now() + '.png';
+            fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
+
+            });
+        } else {
+            avatarName = input.avatar
+        }
+        pool.query("UPDATE users SET prenom = '" + input.prenom +
+            "', nom = '" + input.nom +
+            "', email = '" + input.email +
+            "',password = '" + input.password +
+            "' ,username = '" + input.username +
+            "' ,adresse = '" + input.adresse +
+            "' ,cp = '" + input.cp +
+            "' ,ville = '" + input.ville +
+            "' ,pays = '" + input.pays +
+            "',avatar = '" + avatarName +
+            "' WHERE id = '" + input.id + "'",
+            function(err, rows, fields) {
+                if (err) {
+                    console.log("Error in updating Data : %s", err);
+                    res.json({
+                        'success': false,
+                        'message': err
+                    });
+                } else {
+                    pool.query("SELECT * FROM users", function(err, rows) {
+                        if (err) console.log("Error Editing list : %s", err);
+                        res.json({
+                            users: rows,
+                            success: true,
+                            message: 'user modifie avec succes!'
+                        });
+                    });
+
+                }
+            });
+    };
+}

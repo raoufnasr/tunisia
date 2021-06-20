@@ -11,7 +11,7 @@
                 </div>
             </div>
             <small class="text-danger" *ngIf="isSubmitted">{{message}}</small>
-            <button class="btn" (click)="login()" type="submit" [ngClass]="{'active': loginForm.valid , 'disable': !loginForm.valid}" type="submit">se
+            <button [disabled]=" ! loginForm.valid" class="btn" (click)="login()" type="submit" [ngClass]="{'active': loginForm.valid , 'disable': !loginForm.valid}" type="submit">se
                 connecter</button>
         </form>
         <div class="imageBlc">
