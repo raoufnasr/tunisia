@@ -1,0 +1,33 @@
+<div class="body">
+    <div class="blc-left">
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+
+    </div>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+            <img src="{{ slide.img }}" alt="" width="100%">
+        </div>
+    </ngx-slick-carousel>
+
+    <div class="blc-right">
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+        <div class="image">
+            <img class="img" src="../../../../assets/img/cat.jpg" />
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="detail">
+    <section class="registerContent container ">
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Categorie</a></li>
+            </ol>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn  my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="blcdetail">
+            <div class="blc-left">
+                <img class="card-img-top" src="../../../../assets/img/pub11.jpg" alt="Card image cap">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
+                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                        <img src="{{ slide.img }}" alt="" width="100%">
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+            <div class="blc-right">
+                <ngb-tabset [destroyOnHide]="false">
+                    <ngb-tab title="Informations">
+                        <ng-template ngbTabContent>
+                            <div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Nom</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>XXXXX yyyy</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Description</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>XXXXX yyyy</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Adresse</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>XXXXX yyyy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                        <ng-template ngbTabTitle>Avis</ng-template>
+                        <ng-template ngbTabContent>
+                            <div class="avis">
+                                <div class="avisHeader">
+                                    <div class="avisLeft">
+                                        <img class="like" src="../../../../assets/img/like.png" alt="Card image cap">
+                                    </div>
+                                    <div class="avisRight">
+                                        <p>20 commentaires</p>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <div class="avisBody">
+                                        <div class="image">
+                                            <img class="like" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
+                                        </div>
+                                        <div class="comment">
+                                            <h6>SAida el hajjem</h6>
+                                            <p>xxxxx xxxxxxxxxxx xxxxxxxxx xxxxxxxxxx</p>
+                                        </div>
+                                    </div>
+                                    <div class="avisBody">
+                                        <div class="image">
+                                            <img class="like" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
+                                        </div>
+                                        <div class="comment">
+                                            <h6>SAida el hajjem</h6>
+                                            <p>xxxxx xxxxxxxxxxx xxxxxxxxx xxxxxxxxxx</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <div class="blcommentaire">
+                                        <form class="form-inline">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Commentaire" aria-label="Commentaire">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Envoyer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+        </div>
+    </section>
+</div>

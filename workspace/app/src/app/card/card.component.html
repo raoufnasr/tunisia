@@ -1,0 +1,145 @@
+<div class="products-blc-two" style="overflow-y: hidden;">
+    <!--style="height: 325px;overflow-y: hidden;" class="w-100"-->
+    <div class=" products-list">
+        <!--row col-sm-12 justify-content-center-->
+        <div class="product-item" itemscope itemtype="http://schema.org/IndividualProduct">
+            <div class="text-center ">
+                <!--p-0 mt-3-->
+                <div class="produit">
+                    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject" class="image">
+                        <!-- src="{{product.cached_image?serverURL+product.cached_image:product.galleries && product.galleries.length!==0?serverURL+product.galleries[0].path:'assets/img/no-image.png'}}" -->
+                        <img itemprop="image" src="../../../../assets/img/pub11.jpg" />
+                        <div class="nouveau">nouveau</div>
+                    </div>
+                    <h3 itemprop="name" class="desc">
+                        <span>
+                            produit 1
+                        </span>
+                    </h3>
+                    <div itemprop="description" class="desc-2" style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: block-axis !important;">
+                        <div class="prix-prod">123- 456 €
+                        </div>
+
+                    </div>
+                    <div class="boutons">
+                        <!-- (click)="detailProduct(product);checkFavoris(product)" -->
+                        <div class="hideshow btn-group-toggle">
+                            <button class="butt">View</button>
+
+                        </div>
+                        <div class="list btn-group-toggle ">
+                            <!-- (click)="goto(product)" -->
+                            <button class="butt">checklist</button>
+
+                        </div>
+                        <!--
+                        <div class="hideshow " (click)="addToCart(product) ">
+                          <label class="btn btn-secondary ">
+                            <span class="flaticon-shopping-cart "></span>
+                          </label>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--.row col-sm-12 justify-content-center-->
+    </div>
+</div>
+<!-- Modal -->
+<!-- <div *ngIf="product_detail" class="modal fade product-quick-overview" [id]="'exampleModalCenter'+product_detail.category_id"
+    tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngIf="product_detail">
+                <div class="image-popup">
+                    <span class="image-popup-notif">{{'extras.new'|translate}}</span>
+                    <div class="img1">
+                        <img [src]="extractImage(product_detail)">
+                    </div>
+                    <div class="blcImg">
+                       
+                        <img [src]="extractImage(product_detail)" >
+                    </div>
+                </div>
+                <div class="content-popup">
+                    <div class="headerC">
+                        <div class="name">
+                            {{product_detail?.translations[translationService.getTranslationIndexByLocale(product_detail, locale)]?.title}}
+                        </div>
+                        <button type="button">{{'product_details.in_stock'|translate}} </button>
+                    </div>
+                    <div class="pays"> {{'devislide.country'|translate}}: {{countriesService.getCountryNameTranslationByAlpha3Code(product_detail?.country,
+                        locale)}}
+                    </div>
+                    <div class="ligne">
+                    </div>
+                    <div class="avis">
+                        <ngb-rating [(rate)]="ratings" max="5" [readonly]="true">
+                           
+                            <ng-template let-fill="fill" let-index="index">
+                                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 5">&#9733;</span>
+                            </ng-template>
+                        </ngb-rating>
+                        <div class="note"> ({{ratings}}/ 5 -{{product_detail?.rating_avis_number}} {{'devislide.notice'|translate}}) </div>
+                    </div>
+                    <div class="information">
+                        <div class="inf">
+                            <div class="type"> {{'devislide.reference'|translate}} </div>
+                            <div class="valeur"  [matTooltip]="product_detail?.reference"> {{product_detail?.reference}} </div>
+                        </div>
+                        <div class="inf">
+                            <div class="type"> {{'devislide.category'|translate}} </div>
+                            <div class="valeur" [matTooltip]="product_detail?.category.translations[translationService.getTranslationIndexByLocale(product_detail, locale)]?.title">
+                                {{product_detail?.category.translations[translationService.getTranslationIndexByLocale(product_detail, locale)]?.title}}
+                            </div>
+                        </div>
+                        <div class="inf">
+                            <div class="type"> {{'devislide.minimum_quantity'|translate}} </div>
+                            <div class="valeur" [matTooltip]="product_detail?.min_order"> {{product_detail?.min_order}} </div>
+                        </div>
+                        <div class="inf">
+                            <div class="type"> {{'devislide.remaining_stock'|translate}} </div>
+                            <div class="valeur" [matTooltip]="product_detail?.quantity"> {{product_detail?.quantity}} </div>
+                        </div>
+                    </div>
+                    <div class="prix"> {{product_detail?.price | number: '1.2-2'}} - {{product_detail?.price_ttc | number: '1.2-2' }} €/{{product_detail?.mesure_unit.value}}
+                    </div>
+                    <div class="popup-btns">
+                        <button type="button" (click)="goto(product_detail)">{{'devislide.product_detail'|translate}}</button>
+                        <button type="button" class="favo" (click)="addFavoris(product_detail)" [ngClass]="{'favorite': favorite}">
+                            <span>{{'devislide.add_favori'|translate}}</span>
+                        </button>
+                    </div>
+                    <div class=" row " *ngIf="notify_type=='failure' || connected==false ">
+                        <div class="col-12 ">
+                            <div *ngIf="notify_type=='failure' ">
+                                <span data-notify="message ">{{'product_details.already_exist'|translate}}.
+                                </span>
+                            </div>
+                            <div *ngIf="connected==false ">
+                                <span data-notify="message ">{{'search_page.no_connect'|translate}}
+                                    <a class="connect" routerLink="/login">{{'connecter'|translate}}</a>{{'contunier'|translate}}.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact ">
+                        <div class="partage "> {{'actions.share'|translate}} </div>
+                        <div class="Smedia ">
+                            <a class="facebook " (click)="share(socials.FB) "></a>
+                            <a class="twitter " (click)="share(socials.TWITTER) "></a>
+                            <a class="instagram " (click)="share(socials.INSTAG) "></a>
+                            <a class="whatsapp " (click)="share(socials.WHATSAP) "></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- fin modal -->

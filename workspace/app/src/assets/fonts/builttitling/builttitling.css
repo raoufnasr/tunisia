@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'BuiltTitlingRg-BoldItalic';
+    src: url('BuiltTitlingRg-BoldItalic.eot');
+    src: url('BuiltTitlingRg-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingRg-BoldItalic.woff2') format('woff2'),
+        url('BuiltTitlingRg-BoldItalic.woff') format('woff'),
+        url('BuiltTitlingRg-BoldItalic.ttf') format('truetype'),
+        url('BuiltTitlingRg-BoldItalic.svg#BuiltTitlingRg-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingEl-Italic';
+    src: url('BuiltTitlingEl-Italic.eot');
+    src: url('BuiltTitlingEl-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingEl-Italic.woff2') format('woff2'),
+        url('BuiltTitlingEl-Italic.woff') format('woff'),
+        url('BuiltTitlingEl-Italic.ttf') format('truetype'),
+        url('BuiltTitlingEl-Italic.svg#BuiltTitlingEl-Italic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingRg-Regular';
+    src: url('BuiltTitlingRg-Regular.eot');
+    src: url('BuiltTitlingRg-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingRg-Regular.woff2') format('woff2'),
+        url('BuiltTitlingRg-Regular.woff') format('woff'),
+        url('BuiltTitlingRg-Regular.ttf') format('truetype'),
+        url('BuiltTitlingRg-Regular.svg#BuiltTitlingRg-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingSb-Italic';
+    src: url('BuiltTitlingSb-Italic.eot');
+    src: url('BuiltTitlingSb-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingSb-Italic.woff2') format('woff2'),
+        url('BuiltTitlingSb-Italic.woff') format('woff'),
+        url('BuiltTitlingSb-Italic.ttf') format('truetype'),
+        url('BuiltTitlingSb-Italic.svg#BuiltTitlingSb-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingRg-Italic';
+    src: url('BuiltTitlingRg-Italic.eot');
+    src: url('BuiltTitlingRg-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingRg-Italic.woff2') format('woff2'),
+        url('BuiltTitlingRg-Italic.woff') format('woff'),
+        url('BuiltTitlingRg-Italic.ttf') format('truetype'),
+        url('BuiltTitlingRg-Italic.svg#BuiltTitlingRg-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingRg-Bold';
+    src: url('BuiltTitlingRg-Bold.eot');
+    src: url('BuiltTitlingRg-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingRg-Bold.woff2') format('woff2'),
+        url('BuiltTitlingRg-Bold.woff') format('woff'),
+        url('BuiltTitlingRg-Bold.ttf') format('truetype'),
+        url('BuiltTitlingRg-Bold.svg#BuiltTitlingRg-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingLt-Italic';
+    src: url('BuiltTitlingLt-Italic.eot');
+    src: url('BuiltTitlingLt-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingLt-Italic.woff2') format('woff2'),
+        url('BuiltTitlingLt-Italic.woff') format('woff'),
+        url('BuiltTitlingLt-Italic.ttf') format('truetype'),
+        url('BuiltTitlingLt-Italic.svg#BuiltTitlingLt-Italic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingSb-Regular';
+    src: url('BuiltTitlingSb-Regular.eot');
+    src: url('BuiltTitlingSb-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingSb-Regular.woff2') format('woff2'),
+        url('BuiltTitlingSb-Regular.woff') format('woff'),
+        url('BuiltTitlingSb-Regular.ttf') format('truetype'),
+        url('BuiltTitlingSb-Regular.svg#BuiltTitlingSb-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingLt-Regular';
+    src: url('BuiltTitlingLt-Regular.eot');
+    src: url('BuiltTitlingLt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingLt-Regular.woff2') format('woff2'),
+        url('BuiltTitlingLt-Regular.woff') format('woff'),
+        url('BuiltTitlingLt-Regular.ttf') format('truetype'),
+        url('BuiltTitlingLt-Regular.svg#BuiltTitlingLt-Regular') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BuiltTitlingEl-Regular';
+    src: url('BuiltTitlingEl-Regular.eot');
+    src: url('BuiltTitlingEl-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BuiltTitlingEl-Regular.woff2') format('woff2'),
+        url('BuiltTitlingEl-Regular.woff') format('woff'),
+        url('BuiltTitlingEl-Regular.ttf') format('truetype'),
+        url('BuiltTitlingEl-Regular.svg#BuiltTitlingEl-Regular') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
