@@ -22,7 +22,7 @@ var pool = mysql.createPool({
     database: SERVER.database
 });
 
- const userRouter = require('./routes/userRouter');
+const userRouter = require('./routes/userRouter');
 const productRouter = require('./routes/productRouter');
 const categoryRouter = require('./routes/categoryRouter');
 const roleRouter = require('./routes/roleRouter');
@@ -69,13 +69,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* app.use(expressValidator()); */
 
- app.use("/api/user", userRouter);
+app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/role", roleRouter);
 app.use("/api/favoris", favorisRouter);
 
-
+app.get('/api/:logo', (req, res) => {
+    console.log(__dirname)
+    res.sendFile(__dirname + "/uploads/" + req.params.logo)
+})
 
 
 

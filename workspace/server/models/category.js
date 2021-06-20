@@ -1,11 +1,35 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-    const category = sequelize.define('categories', {
-        nom: DataTypes.STRING,
-        description: DataTypes.STRING
-    }, {});
-    category.associate = function(models) {
-        // associations can be defined here
-    };
-    return category;
+module.exports = {
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable('categories', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
+            },
+            nom: {
+                type: Sequelize.STRING
+            },
+            description: {
+                type: Sequelize.STRING
+            },
+            image: {
+                type: Sequelize.STRING
+            },
+            createdAt: {
+                allowNull: false,
+                type: Sequelize.DATE,
+                defaultValue: new Date()
+            },
+            updatedAt: {
+                allowNull: false,
+                type: Sequelize.DATE,
+                defaultValue: new Date()
+            }
+        });
+    },
+    down: (queryInterface, Sequelize) => {
+        return queryInterface.dropTable('categories');
+    }
 };

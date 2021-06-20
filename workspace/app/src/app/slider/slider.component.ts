@@ -8,11 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class SliderComponent implements OnInit {
 
   slides = [
-    { img: "https://via.placeholder.com/600.png/09f/fff" },
-    { img: "https://via.placeholder.com/600.png/021/fff" },
-    { img: "https://via.placeholder.com/600.png/321/fff" },
-    { img: "https://via.placeholder.com/600.png/422/fff" },
-    { img: "https://via.placeholder.com/600.png/654/fff" }
+    { img: "../../../../assets/slide/1.jpg" },
+    { img: "../../../../assets/slide/2.jpg" },
+    { img: "../../../../assets/slide/3.jpg" },
+    { img: "../../../../assets/slide/4.jpg" },
+    { img: "../../../../assets/slide/5.jpg" },
+    { img: "../../../../assets/slide/6.jpg" },
+    { img: "../../../../assets/slide/7.jpg" },
+    { img: "../../../../assets/slide/8.jpg" },
+    { img: "../../../../assets/slide/9.jpg" },
+    { img: "../../../../assets/slide/10.jpg" },
+    { img: "../../../../assets/slide/11.jpg" },
+    { img: "../../../../assets/slide/12.jpg" },
+    { img: "../../../../assets/slide/13.jpg" },
+    { img: "../../../../assets/slide/14.png" },
+    { img: "../../../../assets/slide/15.jpg" },
+
   ];
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1 };
   constructor() { }

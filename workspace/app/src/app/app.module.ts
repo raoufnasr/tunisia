@@ -20,6 +20,8 @@ import { FavorisComponent } from './favoris/favoris.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { DetailCategoryComponent } from './detail-category/detail-category.component';
 import { ProfilComponent } from './profil/profil.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { ProfilComponent } from './profil/profil.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     SlickCarouselModule,
-    NgbTabsetModule
+    NgbTabsetModule, HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
