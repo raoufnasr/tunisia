@@ -1,0 +1,29 @@
+{
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "pfe_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": false,
+        "tokenSecretKey": "vps684188spotyhomedbwebify"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "pfe_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": false,
+        "tokenSecretKey": "vps684188spotyhomedbwebify"
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "pfe_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "operatorsAliases": false,
+        "tokenSecretKey": "vps684188spotyhomedbwebify"
+    }
+}
