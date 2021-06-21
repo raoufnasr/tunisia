@@ -12,7 +12,12 @@ export class FavorisService {
   constructor(private http: HttpClient) { }
 
 
-  get() {
-    return this.http.get<any>(`${this.config.apiUrl}category/getAll`);
+
+  getFavorisByUser(data) {
+    return this.http.post<any>(`${this.config.apiUrl}favoris/getFavorisByUser`, data);
+  }
+
+  checkFavoris(data) {
+    return this.http.post<any>(`${this.config.apiUrl}favoris/checkFavoris`, data);
   }
 }
