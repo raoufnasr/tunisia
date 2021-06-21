@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    const product = sequelize.define('product', {
+    const product = sequelize.define('products', {
         nom: {
             type: DataTypes.STRING,
             allowNull: true
@@ -35,7 +35,10 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {});
     product.associate = function(models) {
-        // associations can be defined here
+        product.hasMany(models.favoris, {
+            foreignKey: 'id',
+            as: 'favoris',
+        });
     };
     return product;
 };

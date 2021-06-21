@@ -221,20 +221,10 @@ exports.getUserByToken = function(req, res) {
                             })
                         }
                     };
-                    switch (decoded.role) {
-                        case 'agence':
-                            Models.agences.findAll(options).then(resultFn).catch(e => { console.log(e); });
-                            break;
-                        case 'agent':
-                            Models.agents.findAll(options).then(resultFn).catch(e => { console.log(e); });
-                            break;
-                        case 'prop':
-                            Models.proprietaires.findAll(options).then(resultFn).catch(e => { console.log(e); });
-                            break;
-                        case 'user':
-                            Models.users.findAll(options).then(resultFn).catch(e => { console.log(e); });
-                            break;
-                    }
+
+                    Models.users.findAll(options).then(resultFn).catch(e => { console.log(e); });
+
+
                 }
                 console.log(error)
             }

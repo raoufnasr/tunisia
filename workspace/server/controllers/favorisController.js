@@ -7,8 +7,9 @@ var pool = mysql.createPool({
     database: SERVER.database
 });
 
+const Models = require('../models');
 exports.getAllFavoris = (req, res) => {
-    pool.query("SELECT * FROM favoris", function (err, rows) {
+    pool.query("SELECT * FROM favoris", function(err, rows) {
         if (err) {
             console.log(err);
         } else {
@@ -32,14 +33,14 @@ exports.newFavoris = (req, res) => {
 
 
     };
-    pool.query("INSERT INTO favoris set ?", data, function (err, rows, fields) {
+    pool.query("INSERT INTO favoris set ?", data, function(err, rows, fields) {
         if (err) {
             res.json({
                 success: false,
                 message: err
             });
         } else {
-            pool.query("SELECT * FROM favoris", function (err, rows) {
+            pool.query("SELECT * FROM favoris", function(err, rows) {
                 if (err) console.log("Error Editing list : %s", err);
                 res.json({
                     success: true,
@@ -65,14 +66,14 @@ exports.updateFavoris = (req, res) => {
 
 
     const query = 'UPDATE favoris SET ? WHERE  id=?';
-    pool.query(query, [data, input.id], function (err, rows, fields) {
+    pool.query(query, [data, input.id], function(err, rows, fields) {
         if (err) {
             res.json({
                 success: false,
                 message: err
             });
         } else {
-            pool.query("SELECT * FROM favoris", function (err, rows) {
+            pool.query("SELECT * FROM favoris", function(err, rows) {
                 if (err) console.log("Error Editing list : %s", err);
                 res.json({
                     success: true,
@@ -88,7 +89,7 @@ exports.updateFavoris = (req, res) => {
 
 exports.deleteFavoris = (req, res, next) => {
     var input = JSON.parse(JSON.stringify(req.body));
-    pool.query("DELETE FROM favoris WHERE id = " + input.id, function (err, rows, fields) {
+    pool.query("DELETE FROM favoris WHERE id = " + input.id, function(err, rows, fields) {
         if (err) {
             console.log("Error in deleting Data : %s", err);
             res.json({
@@ -96,7 +97,7 @@ exports.deleteFavoris = (req, res, next) => {
                 message: err
             });
         } else {
-            pool.query("SELECT * FROM favoris", function (err, rows) {
+            pool.query("SELECT * FROM favoris", function(err, rows) {
                 if (err) console.log("Error Editing list : %s", err);
                 res.json({
                     success: true,
@@ -120,7 +121,7 @@ exports.getFavorisById = (req, res, next) => {
 
 
     };
-    pool.query("Select * FROM favoris WHERE id = " + input.id, function (err, rows, fields) {
+    pool.query("Select * FROM favoris WHERE id = " + input.id, function(err, rows, fields) {
         if (err) {
             console.log("Error in deleting Data : %s", err);
             res.json({
@@ -148,7 +149,7 @@ exports.checkFavoris = (req, res, next) => {
         note: input.note
     };
 
-    pool.query("Select * FROM favoris WHERE user_id = " + input.user_id, "',product_id='" + input.product_id + "'", function (err, rows, fields) {
+    pool.query("Select * FROM favoris WHERE user_id = " + input.user_id, "',product_id='" + input.product_id + "'", function(err, rows, fields) {
         if (err) {
             console.log("Error in deleting Data : %s", err);
             res.json({
@@ -156,11 +157,11 @@ exports.checkFavoris = (req, res, next) => {
                 message: err
             });
         } else {
-            
+
             var resultArray = Object.values(JSON.parse(JSON.stringify(rows)))
-           
+
             if (rows.length > 0) {
-                pool.query("DELETE FROM favoris WHERE id = " + resultArray[0].id, function (err, rows, fields) {
+                pool.query("DELETE FROM favoris WHERE id = " + resultArray[0].id, function(err, rows, fields) {
                     if (err) {
                         console.log("Error in deleting Data : %s", err);
                         res.json({
@@ -168,7 +169,7 @@ exports.checkFavoris = (req, res, next) => {
                             message: err
                         });
                     } else {
-                        pool.query("SELECT * FROM favoris", function (err, rows) {
+                        pool.query("SELECT * FROM favoris", function(err, rows) {
                             if (err) console.log("Error Editing list : %s", err);
                             res.json({
                                 success: true,
@@ -181,18 +182,17 @@ exports.checkFavoris = (req, res, next) => {
                     }
                 });
 
-            }
-            else {
+            } else {
 
 
-                pool.query("INSERT INTO favoris set ?", data, function (err, rows, fields) {
+                pool.query("INSERT INTO favoris set ?", data, function(err, rows, fields) {
                     if (err) {
                         res.json({
                             success: false,
                             message: err
                         });
                     } else {
-                        pool.query("SELECT * FROM favoris", function (err, rows) {
+                        pool.query("SELECT * FROM favoris", function(err, rows) {
                             if (err) console.log("Error Editing list : %s", err);
                             res.json({
                                 success: true,
@@ -223,3 +223,31 @@ exports.checkFavoris = (req, res, next) => {
 
 
 };
+
+exports.getFavorisByUser = (req, res, next) => {
+    var input = JSON.parse(JSON.stringify(req.body));
+    if (req.tokend_decoded.id) {
+        input.id = req.tokend_decoded.id;
+        var data = {
+            where: { user_id: input.id, },
+
+            include: [{
+                    model: Models.products,
+                    as: 'products'
+                },
+
+
+
+            ]
+        };
+        Models.favoris.findAll(data).then(result => {
+            res.json({
+                success: true,
+                result: result
+            });
+        }).catch(function(e) {
+            //gestion erreur
+            console.log(e);
+        });
+    };
+}
