@@ -2,8 +2,8 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('products', [
-            {   id:1,
+        return queryInterface.bulkInsert('products', [{
+                id: 1,
                 nom: "miel de fleurs d'oranger",
                 description: 'miel bio ',
                 adresse: 'xxxxxx',
@@ -16,7 +16,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:2,
+            {
+                id: 2,
                 nom: 'miel de marrube',
                 description: 'miel bio ',
                 adresse: 'xxxxxx',
@@ -29,7 +30,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:3,
+            {
+                id: 3,
                 nom: 'miel de montagne',
                 description: 'miel bio ',
                 adresse: 'xxxxxx',
@@ -42,7 +44,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:4,
+            {
+                id: 4,
                 nom: 'miel pur de jujubier ',
                 description: 'miel pur ',
                 adresse: 'xxxxxx',
@@ -55,7 +58,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:5,
+            {
+                id: 5,
                 nom: 'miel pur toutes fleurs',
                 description: 'miel pur ',
                 adresse: 'xxxxxx',
@@ -68,7 +72,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:6,
+            {
+                id: 6,
                 nom: 'miel pur deucalyptus',
                 description: 'miel pur ',
                 adresse: 'xxxxxx',
@@ -81,85 +86,92 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id: 7,
+            {
+                id: 7,
                 nom: 'gel aloe vera bio',
                 description: 'gel',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["gel aloe vera Bio 99,1% pur.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
 
-            {   id: 8,
+            {
+                id: 8,
                 nom: 'gélules aloe vera',
-                description:'gélules',
+                description: 'gélules',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["Gélules aloe vera 100% BIO.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
-            {   id: 9,
+            {
+                id: 9,
                 nom: 'jus aloe vera',
                 description: 'jus bio',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["jus aloe vera bio 99,6% pur.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
 
-            {   id: 10,
+            {
+                id: 10,
                 nom: 'jus aloe vera pamplemousse',
                 description: 'jus bio',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["jus daloe vera à lextrait de pepins de pamplemousse BIO 99,1%.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
 
-            {   id: 11,
+            {
+                id: 11,
                 nom: 'stimulant sexuel',
                 description: 'gélule',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["jus aloe vera bio 99,6% pur.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
 
-            {   id: 12,
+            {
+                id: 12,
                 nom: 'sweet nature sucralose',
                 description: 'goutes',
                 adresse: 'xxxxxx',
                 cp: '4011',
                 pays: 'tunisie',
-                category_id: 1,
+                category_id: 2,
                 image: '["sweet nature sucralose liquide.jpg"]',
                 actif: true,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             },
 
-          
-            {   id:13,
+
+            {
+                id: 13,
                 nom: ' chardonnay et muscat',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -172,7 +184,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:14,
+            {
+                id: 14,
                 nom: ' chardonnay',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -185,7 +198,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:15,
+            {
+                id: 15,
                 nom: 'chateau mornag rosé',
                 description: 'vin rosé',
                 adresse: 'xxxxxx',
@@ -198,7 +212,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:16,
+            {
+                id: 16,
                 nom: ' chateau mornag rouge ',
                 description: 'vin rouge',
                 adresse: 'xxxxxx',
@@ -211,7 +226,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:17,
+            {
+                id: 17,
                 nom: 'didona blanc',
                 description: 'blanc',
                 adresse: 'xxxxxx',
@@ -224,7 +240,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:18,
+            {
+                id: 18,
                 nom: 'gris dhammamet',
                 description: 'vin rosé',
                 adresse: 'xxxxxx',
@@ -237,7 +254,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:19,
+            {
+                id: 19,
                 nom: 'muscat de kelibia',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -250,7 +268,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:20,
+            {
+                id: 20,
                 nom: 'muscat sec',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -263,7 +282,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:21,
+            {
+                id: 21,
                 nom: 'selian blanc',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -276,7 +296,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:22,
+            {
+                id: 22,
                 nom: 'ugni blanc',
                 description: 'vin blanc',
                 adresse: 'xxxxxx',
@@ -289,7 +310,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:23,
+            {
+                id: 23,
                 nom: 'magon rouge',
                 description: 'vin rouge',
                 adresse: 'xxxxxx',
@@ -302,7 +324,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:24,
+            {
+                id: 24,
                 nom: 'canelle en baton',
                 description: 'canelle',
                 adresse: 'xxxxxx',
@@ -315,7 +338,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:25,
+            {
+                id: 25,
                 nom: 'cardamone',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -328,7 +352,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:26,
+            {
+                id: 26,
                 nom: 'cumin',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -341,7 +366,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:27,
+            {
+                id: 27,
                 nom: 'curcuma',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -354,7 +380,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:28,
+            {
+                id: 28,
                 nom: 'epice de couscous',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -367,7 +394,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:29,
+            {
+                id: 29,
                 nom: 'la harissa',
                 description: 'condiment',
                 adresse: 'xxxxxx',
@@ -380,7 +408,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:30,
+            {
+                id: 30,
                 nom: 'le tabeul',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -393,7 +422,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:31,
+            {
+                id: 31,
                 nom: 'muscade',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -406,7 +436,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:32,
+            {
+                id: 32,
                 nom: 'paprika',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -419,7 +450,8 @@ module.exports = {
                 updatedAt: new Date(),
             },
 
-            {   id:33,
+            {
+                id: 33,
                 nom: 'ras elhanout',
                 description: 'epice',
                 adresse: 'xxxxxx',
@@ -433,7 +465,7 @@ module.exports = {
             },
 
             {
-                id:34,    
+                id: 34,
                 nom: 'dattes alig',
                 description: 'dattes',
                 category_id: 5,
@@ -443,7 +475,7 @@ module.exports = {
             },
 
             {
-                id:35,    
+                id: 35,
                 nom: 'dattes kenta',
                 description: 'dattes',
                 category_id: 5,
@@ -453,7 +485,7 @@ module.exports = {
             },
 
             {
-                id:36,    
+                id: 36,
                 nom: 'dattes khouat',
                 description: 'dattes',
                 category_id: 5,
@@ -463,7 +495,7 @@ module.exports = {
             },
 
             {
-                id:37,    
+                id: 37,
                 nom: 'dattes le medjoul',
                 description: 'dattes',
                 category_id: 5,
@@ -473,7 +505,7 @@ module.exports = {
             },
 
             {
-                id:38,    
+                id: 38,
                 nom: 'deglet ennour',
                 description: 'dattes',
                 category_id: 5,
@@ -484,7 +516,7 @@ module.exports = {
 
 
             {
-                id:39,    
+                id: 39,
                 nom: 'huile dolive extra vierge',
                 description: 'huile dolive',
                 category_id: 6,
@@ -494,7 +526,7 @@ module.exports = {
             },
 
             {
-                id:40,    
+                id: 40,
                 nom: 'huile dolive fruité',
                 description: 'huile dolive',
                 image: '["huile-dolive-fruite-vert.jpg"]',
@@ -504,7 +536,7 @@ module.exports = {
             },
 
             {
-                id:41,    
+                id: 41,
                 nom: 'huile dolive fruité mur',
                 description: 'huile dolive',
                 category_id: 6,
@@ -514,7 +546,7 @@ module.exports = {
             },
 
             {
-                id:42,    
+                id: 42,
                 nom: 'huile dolive au truffe',
                 description: 'huile dolive',
                 category_id: 6,
@@ -543,7 +575,7 @@ module.exports = {
             },
 
             {
-                id:2,
+                id: 2,
                 nom: 'xxxxxx',
                 description: 'yyyyyy',
                 adresse: 'xxxxxx',

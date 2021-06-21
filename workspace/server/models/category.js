@@ -1,35 +1,15 @@
 'use strict';
-module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('categories', {
-            id: {
-                allowNull: false,
-                autoIncrement: true,
-                primaryKey: true,
-                type: Sequelize.INTEGER
-            },
-            nom: {
-                type: Sequelize.STRING
-            },
-            description: {
-                type: Sequelize.STRING
-            },
-            image: {
-                type: Sequelize.STRING
-            },
-            createdAt: {
-                allowNull: false,
-                type: Sequelize.DATE,
-                defaultValue: new Date()
-            },
-            updatedAt: {
-                allowNull: false,
-                type: Sequelize.DATE,
-                defaultValue: new Date()
-            }
+module.exports = (sequelize, DataTypes) => {
+    const categorie = sequelize.define('categories', {
+        nom: { type: DataTypes.STRING, },
+        description: { type: DataTypes.STRING, },
+        image: { type: DataTypes.STRING, },
+    }, {});
+    categorie.associate = function(models) {
+        categorie.hasMany(models.products, {
+            foreignKey: 'id',
+            as: 'products',
         });
-    },
-    down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('categories');
-    }
+    };
+    return categorie;
 };

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CategorieService } from '../_services/categorie.service';
 
@@ -15,7 +16,8 @@ export class CategorieComponent implements OnInit {
   imgPreview = '../../assets/img/miel.jpg';
 
   constructor(
-    private categoryService: CategorieService
+    private categoryService: CategorieService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +32,11 @@ export class CategorieComponent implements OnInit {
     },
       err => console.log(err))
   }
+
+  goTo(element) {
+
+    this.router.navigate(['/detail-category/', element])
+  }
+
 
 }

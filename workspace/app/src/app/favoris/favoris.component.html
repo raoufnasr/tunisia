@@ -10,6 +10,11 @@
                     <small class=" text-muted "> {{favoris.updatedAt}}</small>
                 </div>
             </div>
+            <div *ngIf="!this.listFavoris">
+                <div class="card">
+                    <p> Aucune favoris ajoutée</p>
+                </div>
+            </div>
         </div>
     </section>
 </div>

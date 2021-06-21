@@ -3,7 +3,7 @@
         <h1 class="title">Des bons plans pour tous les goûts</h1>
         <div class="categorie">
             <div class="card  text-white" *ngFor="let category of listCategory">
-                <img class="card-img" src="{{config.apiUrl}}{{category.image}}" alt="Card image">
+                <img class="card-img" (click)="goTo(category.id)" src="{{config.apiUrl}}{{category.image}}" alt="Card image">
                 <div class="card-img-overlay">
                     <h5 class="card-title">{{category.nom}}</h5>
                 </div>

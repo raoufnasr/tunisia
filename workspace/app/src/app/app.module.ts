@@ -23,6 +23,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
     FavorisComponent,
     CategorieComponent,
     DetailCategoryComponent,
-    ProfilComponent
+    ProfilComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
