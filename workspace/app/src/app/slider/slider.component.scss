@@ -1,55 +1,89 @@
 .body {
-	display: grid;
-	grid-template-columns: 1fr 80% 1fr;
-	.blc-left,
-	.blc-right {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		.image {
-			img {
-				width: 100%;
-				height: 100%;
-				border-radius: 10px;
-			}
-		}
-	}
+    display: grid;
+    grid-template-columns: 1fr 80% 1fr;
+    .blc-left,
+    .blc-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .image {
+            min-width: 150px;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+    }
 }
 
 .slick-slide {
-	img {
-		display: block;
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
+    img {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 ::ng-deep ngx-slick-carousel {
-	.slick-prev,
-	.slick-next {
-		background: #1aa6c5 !important;
-		border-radius: 50%;
-		z-index: 100;
-	}
-	.slick-slider {
-		width: 600px;
-		margin: auto;
-	}
-	.slick-list {
-		height: 400px;
-		background-color: #fff;
-		.slick-track {
-			.slick-slide {
-				height: 400px;
-			}
-		}
-	}
-	.slick-slide {
-		background-color: transparent;
-		img {
-			object-fit: cover;
-			border-radius: 17px;
-		}
-	}
+    .slick-prev,
+    .slick-next {
+        background: #1aa6c5 !important;
+        border-radius: 50%;
+        z-index: 100;
+    }
+    .slick-slider {
+        width: 600px;
+        margin: auto;
+    }
+    .slick-list {
+        height: 400px;
+        background-color: #fff;
+        .slick-track {
+            .slick-slide {
+                height: 400px;
+            }
+        }
+    }
+    .slick-slide {
+        background-color: transparent;
+        img {
+            object-fit: cover;
+            border-radius: 17px;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .body {
+        display: grid;
+        grid-template-columns: 1fr 80% 1fr;
+        .blc-left,
+        .blc-right {
+            .image {
+                min-width: 100px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .body {
+        display: block;
+        .blc-left,
+        .blc-right {
+            flex-direction: row;
+            .image {
+                min-width: 90px;
+                width: 120px;
+            }
+        }
+        .blc-left {
+            margin-bottom: 20px;
+        }
+        .blc-right {
+            margin-top: 20px;
+        }
+    }
 }

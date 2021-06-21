@@ -52,3 +52,27 @@
         }
     }
 }
+
+@media (max-width: 1024px) {
+    .body-catgorie {
+        .registerContent {
+            .categorie {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .body-catgorie {
+        .registerContent {
+            .categorie {
+                grid-template-columns: 1fr;
+                .card {
+                    height: 600px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

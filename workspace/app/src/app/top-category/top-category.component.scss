@@ -57,3 +57,37 @@
         }
     }
 }
+
+@media (max-width: 1024px) {
+    .top-category {
+        .cover-img {
+            width: 500px;
+            .image {
+                width: 400px;
+                height: 300px;
+            }
+        }
+        .description {
+            max-width: 480px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .top-category {
+        display: flex;
+        flex-direction: column;
+        margin: 35px 0;
+        .cover-img {
+            justify-content: center;
+            width: 100%;
+        }
+        &:nth-child(even) {
+            .cover-img {
+                order: 1;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    }
+}

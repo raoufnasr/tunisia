@@ -9,7 +9,7 @@ router.delete('/delete', userController.deleteUser);
 router.post('/getuserbyid', userController.getUserById);
 router.post('/register', userController.newUtilisateur);
 router.post('/update', passportConfig.verifyToken, userController.UpdateProfile);
-
+router.post('/getUserByToken', userController.getUserByToken);
 
 
 module.exports = router;

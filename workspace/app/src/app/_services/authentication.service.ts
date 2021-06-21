@@ -26,4 +26,13 @@ export class AuthenticationService {
   register(data) {
     return this.http.post<any>(`${this.config.apiUrl}user/register`, data);
   }
+
+
+  getuserByToken() {
+    let currentClient: any = localStorage.getItem('currentClient')
+    return this.http.post<any>(this.config.apiUrl + 'user/getUserByToken', { token: JSON.parse(currentClient) })
+      .pipe(map(result => {
+        return result;
+      }));
+  }
 }

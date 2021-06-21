@@ -52,3 +52,11 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .register {
+        .registerContent {
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -11,6 +11,8 @@ var pool = mysql.createPool({
     database: SERVER.database
 });
 
+const Models = require('../models');
+
 
 /* login with passport js */
 exports.loginUser = (req, res, next) => {
@@ -190,4 +192,57 @@ exports.UpdateProfile = (req, res, next) => {
                 }
             });
     };
+}
+
+exports.getUserByToken = function(req, res) {
+    let token = req.body.token;
+    if (token) {
+        jwt.verify(token, config.tokenSecretKey,
+            function(error, decoded) {
+                if (error === null && decoded) {
+                    //check content of decoded token
+                    var options = {
+                        where: {
+                            id: decoded.id,
+
+                        },
+                        attributes: { exclude: ["password"] }
+                    };
+                    var resultFn = function(result) {
+                        if (result) {
+                            return res.json({
+                                success: true,
+                                client: result
+                            });
+                        } else {
+                            res.status(400).json({
+                                success: false,
+                                message: 'client non trouvé'
+                            })
+                        }
+                    };
+                    switch (decoded.role) {
+                        case 'agence':
+                            Models.agences.findAll(options).then(resultFn).catch(e => { console.log(e); });
+                            break;
+                        case 'agent':
+                            Models.agents.findAll(options).then(resultFn).catch(e => { console.log(e); });
+                            break;
+                        case 'prop':
+                            Models.proprietaires.findAll(options).then(resultFn).catch(e => { console.log(e); });
+                            break;
+                        case 'user':
+                            Models.users.findAll(options).then(resultFn).catch(e => { console.log(e); });
+                            break;
+                    }
+                }
+                console.log(error)
+            }
+        );
+    } else {
+        return res.status(400).JSON({
+            success: false,
+            message: "No token provided"
+        })
+    }
 }

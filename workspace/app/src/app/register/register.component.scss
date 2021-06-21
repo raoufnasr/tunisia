@@ -53,3 +53,15 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .register {
+        .registerContent {
+            .form {
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
+}
