@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'profil', component: ProfilComponent
   },
   {
-    path: 'product', component: ProductComponent
+    path: 'product/:id', component: ProductComponent
   },
 
 ];

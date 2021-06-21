@@ -11,10 +11,10 @@
         </nav>
         <div class="blcdetail">
             <div class="blc-left">
-                <img class="card-img-top" src="../../../../assets/img/pub11.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{config.apiUrl}}{{produit.image}}" alt="Card image cap">
                 <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
-                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-                        <img src="{{ slide.img }}" alt="" width="100%">
+                    <div ngxSlickItem *ngFor="let slide of produit.image" class="slide">
+                        <img src="{{config.apiUrl}}{{ slide }}" alt="" width="100%">
                     </div>
                 </ngx-slick-carousel>
             </div>
@@ -28,7 +28,7 @@
                                         <h5>Nom</h5>
                                     </div>
                                     <div class="contenu">
-                                        <p>XXXXX yyyy</p>
+                                        <p>{{produit?.nom}}</p>
                                     </div>
                                 </div>
                                 <div class="list">
@@ -36,7 +36,7 @@
                                         <h5>Description</h5>
                                     </div>
                                     <div class="contenu">
-                                        <p>XXXXX yyyy</p>
+                                        <p>{{produit?.description}}</p>
                                     </div>
                                 </div>
                                 <div class="list">
@@ -44,7 +44,7 @@
                                         <h5>Adresse</h5>
                                     </div>
                                     <div class="contenu">
-                                        <p>XXXXX yyyy</p>
+                                        <p>{{produit?.adresse}}</p>
                                     </div>
                                 </div>
                             </div>

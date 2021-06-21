@@ -14,4 +14,9 @@ export class ProduitService {
   getProduitByCategory(data) {
     return this.http.post<any>(`${this.config.apiUrl}product/getProductbyCategory`, data);
   }
+
+  getProduitById(data) {
+    return this.http.post<any>(`${this.config.apiUrl}product/getproductbyid`, data);
+  }
+
 }

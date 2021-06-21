@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ProduitService } from '../_services/produit.service';
 
@@ -17,6 +17,7 @@ export class DetailCategoryComponent implements OnInit {
   constructor(
     private produitService: ProduitService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class DetailCategoryComponent implements OnInit {
   getProduitByCategory() {
     const body = { id: this.paramCategorytId }
     this.produitService.getProduitByCategory(body).subscribe(res => {
-      console.log(res);
+
       this.listProduit = res.result;
       this.listProduit.forEach(element => {
         let obj = JSON.parse(element.image);
@@ -42,6 +43,12 @@ export class DetailCategoryComponent implements OnInit {
 
     },
       err => console.log(err))
+  }
+
+  goTo(element) {
+    /* { queryParams: { categorie: state.url } */
+
+    this.router.navigate(['/product/', element])
   }
 
 }

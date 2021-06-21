@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { ProduitService } from '../_services/produit.service';
 
 @Component({
   selector: 'app-product',
@@ -14,9 +17,22 @@ export class ProductComponent implements OnInit {
     { img: "https://via.placeholder.com/600.png/654/fff" }
   ];
   slideConfig = { "slidesToShow": 4, "slidesToScroll": 4 };
-  constructor() { }
+  paramCategorytId;
+  produit;
+  public config = {
+    apiUrl: environment.url
+  };
+  constructor(private route: ActivatedRoute,
+    private produitService: ProduitService) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.paramCategorytId = params.get('id');
+    });
+    if (this.paramCategorytId) {
+      this.getInfoProduit()
+    }
+
   }
 
   addSlide() {
@@ -41,6 +57,25 @@ export class ProductComponent implements OnInit {
 
   beforeChange(e) {
     console.log('beforeChange');
+  }
+
+  getInfoProduit() {
+    const body = { id: this.paramCategorytId }
+    this.produitService.getProduitById(body).subscribe(res => {
+
+      this.produit = res.result[0];
+      console.log(this.produit);
+
+      let obj = JSON.parse(this.produit.image);
+      console.log(obj);
+      this.produit.image = obj;
+
+
+
+    },
+      err => console.log(err))
+
+
   }
 
 
