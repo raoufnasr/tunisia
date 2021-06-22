@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   imgPreview="../../../../assets/img/anonyme.png";
   listCommentaire;
   isFavoris:boolean=false;
- 
+  searchText:string;
   slides = [
     { img: "https://via.placeholder.com/600.png/09f/fff" },
     { img: "https://via.placeholder.com/600.png/021/fff" },

@@ -34,13 +34,14 @@ header {
                 }
                 .page-nav-actions {
                     display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
                     list-style: none;
                     padding: 0;
                     margin: 0;
                     li {
                         color: black;
                         text-decoration: none;
+                        cursor: pointer;
                         &.favoris {
                             background-image: url('../../../assets/img/love.png');
                             background-repeat: no-repeat;
@@ -69,6 +70,12 @@ header {
                             background-image: url('../../../assets/img/profil.png');
                             background-repeat: no-repeat;
                             background-position: 20% center;
+                            background-size: 17px auto;
+                        }
+                        &.logout {
+                            background-image: url('../../../assets/img/logout.png');
+                            background-repeat: no-repeat;
+                            background-position: 10% center;
                             background-size: 17px auto;
                         }
                     }
@@ -106,6 +113,7 @@ header {
                     }
                     #toggle:checked~.page-nav-actions {
                         display: block;
+                        z-index: 10;
                         float: right;
                         position: absolute;
                         right: 50px;
