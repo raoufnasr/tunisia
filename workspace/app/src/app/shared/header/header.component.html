@@ -10,18 +10,21 @@
                 <label class="haumburger" for="toggle">&#9776;</label>
                 <input type="checkbox" id="toggle" />
                 <ul class="page-nav-actions">
-                    <li class="inscri" routerLink="register">
+                    <li *ngIf="!loggedIn" class="inscri" routerLink="register">
                         <a> <span class="flaticon-users d-xs-none d-xl-block"></span>Inscription</a>
                     </li>
                     <li class="categories" routerLink="categories">
                         <a> <span class="flaticon-users d-xs-none d-xl-block"></span>Catégories</a>
                     </li>
-                    <li class="favoris" routerLink="favoris">
+                    <li *ngIf="loggedIn" class="favoris" routerLink="favoris">
                         <a> <span class="flaticon-like "></span>Favoris</a>
                     </li>
-                    <li routerLink="profil" class="profil"><a>Profil</a></li>
-                    <li class="login" routerLink="login">
+                    <li *ngIf="loggedIn" routerLink="profil" class="profil"><a>Profil</a></li>
+                    <li *ngIf="!loggedIn" class="login" routerLink="login">
                         <a> <span class="flaticon-locked d-xs-none d-xl-block"></span>Se connecter</a>
+                    </li>
+                    <li *ngIf="loggedIn" class="logout" (click)="logout()">
+                        <a> <span class="flaticon-locked d-xs-none d-xl-block"></span>Se déconnecter</a>
                     </li>
                 </ul>
             </nav>

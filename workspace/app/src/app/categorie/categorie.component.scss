@@ -76,3 +76,17 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .body-catgorie {
+        .registerContent {
+            .categorie {
+                grid-template-columns: 1fr;
+                .card {
+                    height: 300px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

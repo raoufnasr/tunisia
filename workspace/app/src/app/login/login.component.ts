@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../_services/authentication.service';
+import { SubscriptionService } from '../_services/subscription.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
+    private router:Router,
+    private filterService:SubscriptionService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +44,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(body).subscribe(
       res => {
         if (res.success) {
+          this.sendAlerte();
+          this.router.navigate(['/'])
 
         }
         else {
@@ -49,6 +55,9 @@ export class LoginComponent implements OnInit {
       }, err => console.log(err)
     )
 
+  }
+  sendAlerte(): void {
+    this.filterService.sendAlerte("connected");
   }
 
 }

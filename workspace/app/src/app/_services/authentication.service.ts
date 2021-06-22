@@ -23,6 +23,11 @@ export class AuthenticationService {
     }));
   }
 
+  logout() {
+    localStorage.removeItem('currentClient');
+    localStorage.removeItem('role');
+}
+
   register(data) {
     return this.http.post<any>(`${this.config.apiUrl}user/register`, data);
   }
