@@ -27,6 +27,7 @@ const productRouter = require('./routes/productRouter');
 const categoryRouter = require('./routes/categoryRouter');
 const roleRouter = require('./routes/roleRouter');
 const favorisRouter = require('./routes/favorisRouter');
+const commentaireRouter = require('./routes/commentaireRoute');
 
 const passportConfig = require('./config/passport');
 const passport = require('passport');
@@ -72,6 +73,8 @@ app.use("/api/product", productRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/role", roleRouter);
 app.use("/api/favoris", favorisRouter);
+app.use("/api/commentaire", commentaireRouter);
+
 
 app.get('/api/:logo', (req, res) => {
     console.log(__dirname)

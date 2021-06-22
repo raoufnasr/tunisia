@@ -35,4 +35,9 @@ export class AuthenticationService {
         return result;
       }));
   }
+
+  UpdateProfile(body){
+    return this.http.post<any>(this.config.apiUrl + 'user/update',body)
+      
+  }
 }

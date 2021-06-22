@@ -24,6 +24,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ProductComponent } from './product/product.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ProductComponent } from './product/product.component';
     FormsModule,
     ReactiveFormsModule,
     SlickCarouselModule,
+    Ng2SearchPipeModule,
     NgbTabsetModule, HttpClientModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],

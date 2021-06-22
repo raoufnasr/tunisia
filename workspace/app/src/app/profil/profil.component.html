@@ -2,49 +2,51 @@
     <div class="registerContent container ">
         <h1>Mon Profil</h1>
         <div class="blcImage"> <img class="card-img-top" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
+            <div class="blcUpload">
+                <img class="camera" src="../../../../assets/img/camera.png" alt="cammera">
+            </div>
         </div>
-        <form class="form">
+        <div class="blcEdit">
+            <img class="edit" src="../../../../assets/img/edit.svg" alt="cammera">
+        </div>
+        <form class="form" [formGroup]="registerForm">
             <div class="form-row">
                 <div class="inp">
-                    <input type="text" class="form-control inputblc is-valid" id="validationServer01" placeholder="Nom"
-                        required>
+                    <input type="text" class="form-control inputblc " id="validerver01" placeholder="Nom" formControlName="nom">
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control is-valid inputblc" id="validationServer02"
-                        placeholder="prénom" required>
+                    <input type="text" class="form-control  inputblc" id="validativer02" placeholder="prénom" formControlName="prenom">
                 </div>
                 <div class="inp">
                     <div>
-                        <input type="text" class="form-control inputblc is-invalid" id="validationServerEmail"
-                            placeholder="Email" aria-describedby="inputGroupPrepend3" required>
-                        <!--       <div class="invalid-feedback"> Please choose a username. </div> -->
+                        <input type="text" class="form-control inputblc " id="validerverEmail" placeholder="Email" aria-describedby="inputGroupPrepend3" formControlName="email">
                     </div>
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control inputblc is-invalid" id="validationServer03"
-                        placeholder="Username" required>
+                    <input type="text" class="form-control inputblc " id="validati03" placeholder="Username" formControlName="username">
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control inputblc is-invalid" id="validationServer04"
-                        placeholder="password" required>
+                    <input type="password" class="form-control inputblc " id="validaServer04" placeholder="password" formControlName="password">
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer05"
-                        placeholder="adresse" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="text" class="form-control inputblc  " id="validation07" placeholder="Téléphone" formControlName="phone">
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer06"
-                        placeholder="code postal" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="text" class="form-control inputblc  " id="valir05" placeholder="adresse" formControlName="adresse">
                 </div>
                 <div class="inp">
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer07"
-                        placeholder="pays" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="text" class="form-control inputblc  " id="valider06" placeholder="code postal" formControlName="cp">
                 </div>
+                <div class="inp">
+                    <input type="text" class="form-control inputblc  " id="varver06" placeholder="ville" formControlName="ville">
+                </div>
+                <div class="inp">
+                    <input type="text" class="form-control inputblc  " id="valir07" placeholder="pays" formControlName="pays">
+                </div>
+
+
             </div>
-            <button class="btn " type="submit">S'inscrire</button>
+            <button class="btn " (click)="updateProfile()" type="submit">Modifier</button>
         </form>
     </div>
 </div>

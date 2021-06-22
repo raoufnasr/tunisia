@@ -232,13 +232,31 @@ exports.getFavorisByUser = (req, res, next) => {
             where: { user_id: input.id, },
 
             include: [{
-                    model: Models.products,
-                    as: 'products'
-                },
+                model: Models.products,
+                as: 'products'
+            }, ]
+        };
+        Models.favoris.findAll(data).then(result => {
+            res.json({
+                success: true,
+                result: result
+            });
+        }).catch(function(e) {
+            //gestion erreur
+            console.log(e);
+        });
+    };
+}
 
-
-
-            ]
+exports.getIfFavoris = (req, res, next) => {
+    var input = JSON.parse(JSON.stringify(req.body));
+    if (req.tokend_decoded.id) {
+        input.id = req.tokend_decoded.id;
+        var data = {
+            where: {
+                user_id: input.id,
+                product_id: input.product_id
+            },
         };
         Models.favoris.findAll(data).then(result => {
             res.json({

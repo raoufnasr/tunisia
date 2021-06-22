@@ -20,4 +20,8 @@ export class FavorisService {
   checkFavoris(data) {
     return this.http.post<any>(`${this.config.apiUrl}favoris/checkFavoris`, data);
   }
+
+  getIfFavoris(data) {
+    return this.http.post<any>(`${this.config.apiUrl}favoris/getIfFavoris`, data);
+  }
 }

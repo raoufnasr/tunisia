@@ -1,4 +1,5 @@
 const passport = require('passport');
+var fs = require('fs');
 var { SERVER } = require('../config/variables');
 var mysql = require('mysql');
 var jwt = require('jsonwebtoken');
@@ -167,6 +168,7 @@ exports.UpdateProfile = (req, res, next) => {
             "',password = '" + input.password +
             "' ,username = '" + input.username +
             "' ,adresse = '" + input.adresse +
+            "' ,phone = '" + input.phone +
             "' ,cp = '" + input.cp +
             "' ,ville = '" + input.ville +
             "' ,pays = '" + input.pays +
@@ -205,8 +207,8 @@ exports.getUserByToken = function(req, res) {
                         where: {
                             id: decoded.id,
 
-                        },
-                        attributes: { exclude: ["password"] }
+                        }
+
                     };
                     var resultFn = function(result) {
                         if (result) {

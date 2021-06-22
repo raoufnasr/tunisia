@@ -12,6 +12,6 @@ router.post('/getfavorisbyid', favorisController.getFavorisById);
 router.post('/checkFavoris', favorisController.checkFavoris);
 
 router.post('/getFavorisByUser', passportConfig.verifyToken, favorisController.getFavorisByUser);
-
+router.post('/getIfFavoris', passportConfig.verifyToken, favorisController.getIfFavoris);
 
 module.exports = router;

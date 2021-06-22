@@ -5,7 +5,7 @@
                 <li class="breadcrumb-item"><a href="#">Categorie</a></li>
             </ol>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" autocomplete="off" placeholder="Search" aria-label="Search">
                 <button class="btn  my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav>
@@ -55,38 +55,34 @@
                         <ng-template ngbTabContent>
                             <div class="avis">
                                 <div class="avisHeader">
-                                    <div class="avisLeft">
-                                        <img class="like" src="../../../../assets/img/like.png" alt="Card image cap">
+                                    <div class="avisLeft" *ngIf="isFavoris">
+                                        <img (click)="checkFavoris()" class="like" src="../../../../assets/img/like.png" alt="Card image cap">
+                                    </div>
+                                    <div class="avisLeft" *ngIf="!isFavoris">
+                                        <img (click)="checkFavoris()" class="like" src="../../../../assets/img/heart.png" alt="Card image cap">
                                     </div>
                                     <div class="avisRight">
-                                        <p>20 commentaires</p>
+                                        <p>{{commNumber}} commentaires</p>
                                     </div>
                                 </div>
                                 <div class="body">
-                                    <div class="avisBody">
+                                    <div class="avisBody" *ngFor="let comment of listCommentaire | filter:searchText">
                                         <div class="image">
-                                            <img class="like" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
+                                            <img class="like" [src]="comment.users.avatar?config.apiUrl+comment.users.avatar:imgPreview" alt="Card image cap">
                                         </div>
                                         <div class="comment">
-                                            <h6>SAida el hajjem</h6>
-                                            <p>xxxxx xxxxxxxxxxx xxxxxxxxx xxxxxxxxxx</p>
+                                            <h6>{{comment.users?.prenom}} {{comment.users?.nom}}</h6>
+                                            <p class="commt">{{comment.commentaire}}</p>
+                                            <small>{{comment.updatedAt|date:'medium'}}</small>
                                         </div>
                                     </div>
-                                    <div class="avisBody">
-                                        <div class="image">
-                                            <img class="like" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
-                                        </div>
-                                        <div class="comment">
-                                            <h6>SAida el hajjem</h6>
-                                            <p>xxxxx xxxxxxxxxxx xxxxxxxxx xxxxxxxxxx</p>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="footer">
                                     <div class="blcommentaire">
-                                        <form class="form-inline">
-                                            <input class="form-control mr-sm-2" type="search" placeholder="Commentaire" aria-label="Commentaire">
-                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Envoyer</button>
+                                        <form class="form-inline" [formGroup]="commentaireForm">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Commentaire" formControlName="commentaire" aria-label="Commentaire">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" c (click)="createCommentaire()" type="submit">Envoyer</button>
                                         </form>
                                     </div>
                                 </div>
