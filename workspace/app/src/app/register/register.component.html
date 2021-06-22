@@ -1,48 +1,43 @@
 <div class="register">
     <section class="registerContent container ">
         <h1>S'inscrire </h1>
-        <form class="form">
+        <form [formGroup]="registerForm" class="form">
             <div class="form-row">
                 <div>
-                    <input type="text" class="form-control inputblc is-valid" id="validationServer01" placeholder="Nom"
-                        required>
+                    <input type="text" class="form-control inputblc " [ngClass]="{'is-invalid':  f.nom.touched && f.nom.errors?.required }" id="nom01" placeholder="Nom" formControlName="nom">
                 </div>
                 <div>
-                    <input type="text" class="form-control is-valid inputblc" id="validationServer02"
-                        placeholder="prénom" required>
+                    <input type="text" class="form-control  inputblc" id="prenom" formControlName="prenom" [ngClass]="{'is-invalid':  f.prenom.touched && f.prenom.errors?.required }" placeholder="prénom">
                 </div>
                 <div>
                     <div>
-                        <input type="text" class="form-control inputblc is-invalid" id="validationServerEmail"
-                            placeholder="Email" aria-describedby="inputGroupPrepend3" required>
-                        <!--       <div class="invalid-feedback"> Please choose a username. </div> -->
+                        <input type="text" class="form-control inputblc " [ngClass]="{'is-invalid':  f.email.touched && f.email.errors?.required || f.email.errors?.pattern}" id="rEmail" formControlName="email" placeholder="Email" aria-describedby="inputGroupPrepend3">
                     </div>
                 </div>
                 <div>
-                    <input type="text" class="form-control inputblc is-invalid" id="validationServer03"
-                        placeholder="Username" required>
+                    <input type="text" class="form-control inputblc " id="usernamer03" formControlName="username" [ngClass]="{'is-invalid':  f.username.touched && f.username.errors?.required }" placeholder="Username">
                 </div>
                 <div>
-                    <input type="text" class="form-control inputblc is-invalid" id="validationServer04"
-                        placeholder="password" required>
+                    <input type="password" class="form-control inputblc " [ngClass]="{'is-invalid':  f.password.touched && f.password.errors?.required || f.password.errors?.minlength }" id="password04" formControlName="password" placeholder="password">
                 </div>
                 <div>
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer05"
-                        placeholder="adresse" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="number" class="form-control inputblc " id="phone03" formControlName="phone" placeholder="télèphone">
                 </div>
                 <div>
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer06"
-                        placeholder="code postal" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="text" class="form-control inputblc  " id="adresse05" formControlName="adresse" placeholder="adresse">
                 </div>
                 <div>
-                    <input type="text" class="form-control inputblc  is-invalid" id="validationServer07"
-                        placeholder="pays" required>
-                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                    <input type="number" class="form-control inputblc  " id="cp06" formControlName="cp" placeholder="code postal">
+                </div>
+                <div>
+                    <input type="text" class="form-control inputblc  " id="ville07" formControlName="ville" placeholder="ville">
+                </div>
+                <div>
+                    <input type="text" class="form-control inputblc  " id="pays07" formControlName="pays" placeholder="pays">
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <small class="text-danger" *ngIf="isSubmitted">{{message}}</small>
+            <button class="btn btn-primary" (click)="register()" [ngClass]="{'active': registerForm.valid , 'disable': !registerForm.valid}" type="submit">Enregistrer</button>
         </form>
     </section>
 </div>

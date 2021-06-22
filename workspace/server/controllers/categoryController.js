@@ -28,7 +28,7 @@ exports.newCategory = (req, res) => {
     var data = {
         nom: input.nom,
         description: input.description,
-       
+
 
     };
     pool.query("INSERT INTO categories set ?", data, function(err, rows, fields) {
@@ -57,16 +57,16 @@ exports.updateCategory = (req, res) => {
     var input = JSON.parse(JSON.stringify(req.body));
 
     var data = {
-      
+
         nom: input.nom,
         description: input.description,
-        
+
 
     };
- 
+
 
     const query = 'UPDATE categories SET ? WHERE  id=?';
-pool.query(query, [data, input.id], function(err, rows, fields) {
+    pool.query(query, [data, input.id], function(err, rows, fields) {
         if (err) {
             res.json({
                 success: false,
@@ -103,7 +103,7 @@ exports.deleteCategory = (req, res, next) => {
                     success: true,
                     message: 'categorie supprimé avec succes!',
                     result: rows,
-                    
+
                 });
             });
 
@@ -122,15 +122,14 @@ exports.getCategoryById = (req, res, next) => {
                 message: err
             });
         } else {
-            
-                res.json({
-                    success: true,
-                    result: rows,
-                    
-                });
-            
+
+            res.json({
+                success: true,
+                result: rows,
+
+            });
+
 
         }
     });
 };
-

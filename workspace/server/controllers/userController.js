@@ -1,4 +1,5 @@
 const passport = require('passport');
+var fs = require('fs');
 var { SERVER } = require('../config/variables');
 var mysql = require('mysql');
 var jwt = require('jsonwebtoken');
@@ -11,6 +12,8 @@ var pool = mysql.createPool({
     database: SERVER.database
 });
 
+const Models = require('../models');
+
 
 /* login with passport js */
 exports.loginUser = (req, res, next) => {
@@ -21,22 +24,14 @@ exports.loginUser = (req, res, next) => {
         if (!user) {
             res.json({
                 success: false,
-                message: 'email/password not valid'
+                message: 'email/password incorrecte'
             });
-        }
-        if (user.actif == '0') {
-            res.json({
-                success: false,
-                message: 'activer votre compte'
-            });
-            return
         }
         req.logIn(user, (err) => {
             if (err) { return next(err); }
-            const token = jwt.sign({ id: user.id, role: 'agence' }, config.tokenSecretKey);
-            console.log('Success! You are logged in.')
-            req.flash('success', { msg: 'Success! You are logged in.' });
-            res.json({ success: true, message: 'Success! You are logged in', token: token, user: user });
+            const token = jwt.sign({ id: user.id, role: 'user' }, config.tokenSecretKey);
+            req.flash('success', { msg: 'succès vous êtes connecté' });
+            res.json({ success: true, message: 'succès vous êtes connecté', token: token, user: user });
 
         });
     })(req, res, next);
@@ -72,7 +67,7 @@ exports.deleteUser = (req, res, next) => {
                     success: true,
                     message: 'utilisateur supprimé avec succes!',
                     result: rows,
-                    
+
                 });
             });
 
@@ -91,26 +86,25 @@ exports.getUserById = (req, res, next) => {
                 message: err
             });
         } else {
-            
-                res.json({
-                    success: true,
-                    result: rows,
-                    
-                });
-            
+
+            res.json({
+                success: true,
+                result: rows,
+
+            });
+
 
         }
     });
 };
 
- exports.newUtilisateur = (req, res) => {
+exports.newUtilisateur = (req, res) => {
 
     var input = JSON.parse(JSON.stringify(req.body));
-   
 
     pool.query("SELECT * FROM users", function(err, rows) {
         if (err) console.log("Error get list : %s", err);
-      /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
+        /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
         if (input.avatar) {
             let avatar = input.avatar.split(';base64,').pop();
             var avatarName = Date.now() + '.png'
@@ -130,32 +124,117 @@ exports.getUserById = (req, res, next) => {
             adresse: input.adresse,
             cp: input.cp,
             pays: input.pays,
+            ville: input.ville,
 
         };
-    
-                    
-                        
-                        pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
-                            if (err) {
-                                console.log("Error in Inserting Data : %s", err);
-                                res.json({
-                                    success: false,
-                                    message: err
-                                });
-                            } else {
-                                pool.query("SELECT * FROM users", function(err, rows) {
-                                    if (err) console.log("Error Editing list : %s", err);
-                                    res.json({
-                                        utilisateurs: rows,
-                                        success: true,
-                                        message: 'utilisateur crée avec succes!'
-                                    });
-                                });
-                            }
-                        });
-                    
-               
-          
-
+        pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
+            if (err) {
+                console.log("Error in Inserting Data : %s", err);
+                res.json({
+                    success: false,
+                    message: err
+                });
+            } else {
+                pool.query("SELECT * FROM users", function(err, rows) {
+                    if (err) console.log("Error Editing list : %s", err);
+                    res.json({
+                        utilisateurs: rows,
+                        success: true,
+                        message: 'utilisateur crée avec succes!'
+                    });
+                });
+            }
+        });
     });
-}; 
+};
+
+exports.UpdateProfile = (req, res, next) => {
+    var input = JSON.parse(JSON.stringify(req.body));
+    if (req.tokend_decoded.id) {
+        input.id = req.tokend_decoded.id;
+        avatarName = '';
+        if (input.avatar && !input.avatar.includes('.png')) {
+            let avatar = input.avatar.split(';base64,').pop();
+            var avatarName = Date.now() + '.png';
+            fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
+
+            });
+        } else {
+            avatarName = input.avatar
+        }
+        pool.query("UPDATE users SET prenom = '" + input.prenom +
+            "', nom = '" + input.nom +
+            "', email = '" + input.email +
+            "',password = '" + input.password +
+            "' ,username = '" + input.username +
+            "' ,adresse = '" + input.adresse +
+            "' ,phone = '" + input.phone +
+            "' ,cp = '" + input.cp +
+            "' ,ville = '" + input.ville +
+            "' ,pays = '" + input.pays +
+            "',avatar = '" + avatarName +
+            "' WHERE id = '" + input.id + "'",
+            function(err, rows, fields) {
+                if (err) {
+                    console.log("Error in updating Data : %s", err);
+                    res.json({
+                        'success': false,
+                        'message': err
+                    });
+                } else {
+                    pool.query("SELECT * FROM users", function(err, rows) {
+                        if (err) console.log("Error Editing list : %s", err);
+                        res.json({
+                            users: rows,
+                            success: true,
+                            message: 'user modifie avec succes!'
+                        });
+                    });
+
+                }
+            });
+    };
+}
+
+exports.getUserByToken = function(req, res) {
+    let token = req.body.token;
+    if (token) {
+        jwt.verify(token, config.tokenSecretKey,
+            function(error, decoded) {
+                if (error === null && decoded) {
+                    //check content of decoded token
+                    var options = {
+                        where: {
+                            id: decoded.id,
+
+                        }
+
+                    };
+                    var resultFn = function(result) {
+                        if (result) {
+                            return res.json({
+                                success: true,
+                                client: result
+                            });
+                        } else {
+                            res.status(400).json({
+                                success: false,
+                                message: 'client non trouvé'
+                            })
+                        }
+                    };
+
+                    Models.users.findAll(options).then(resultFn).catch(e => { console.log(e); });
+
+
+                }
+                console.log(error)
+            }
+        );
+    } else {
+        return res.status(400).JSON({
+            success: false,
+            message: "No token provided"
+        })
+    }
+}

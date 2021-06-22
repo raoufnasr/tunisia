@@ -1,0 +1,96 @@
+<div class="detail">
+    <section class="registerContent container ">
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Categorie</a></li>
+            </ol>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" autocomplete="off" placeholder="Search" aria-label="Search">
+                <button class="btn  my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="blcdetail">
+            <div class="blc-left">
+                <img class="card-img-top" src="{{config.apiUrl}}{{produit.image}}" alt="Card image cap">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
+                    <div ngxSlickItem *ngFor="let slide of produit.image" class="slide">
+                        <img src="{{config.apiUrl}}{{ slide }}" alt="" width="100%">
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+            <div class="blc-right">
+                <ngb-tabset [destroyOnHide]="false">
+                    <ngb-tab title="Informations">
+                        <ng-template ngbTabContent>
+                            <div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Nom</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>{{produit?.nom}}</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Description</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>{{produit?.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listTitle">
+                                        <h5>Adresse</h5>
+                                    </div>
+                                    <div class="contenu">
+                                        <p>{{produit?.adresse}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                        <ng-template ngbTabTitle>Avis</ng-template>
+                        <ng-template ngbTabContent>
+                            <div class="avis">
+                                <div class="avisHeader">
+                                    <div class="avisLeft" *ngIf="isFavoris">
+                                        <img (click)="checkFavoris()" class="like" src="../../../../assets/img/like.png" alt="Card image cap">
+                                    </div>
+                                    <div class="avisLeft" *ngIf="!isFavoris">
+                                        <img (click)="checkFavoris()" class="like" src="../../../../assets/img/heart.png" alt="Card image cap">
+                                    </div>
+                                    <div class="avisRight">
+                                        <p>{{commNumber}} commentaires</p>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <div class="avisBody" *ngFor="let comment of listCommentaire | filter:searchText">
+                                        <div class="image">
+                                            <img class="like" [src]="comment.users.avatar?config.apiUrl+comment.users.avatar:imgPreview" alt="Card image cap">
+                                        </div>
+                                        <div class="comment">
+                                            <h6>{{comment.users?.prenom}} {{comment.users?.nom}}</h6>
+                                            <p class="commt">{{comment.commentaire}}</p>
+                                            <small>{{comment.updatedAt|date:'medium'}}</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="footer">
+                                    <div class="blcommentaire">
+                                        <form class="form-inline" [formGroup]="commentaireForm">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Commentaire" formControlName="commentaire" aria-label="Commentaire">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" c (click)="createCommentaire()" type="submit">Envoyer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+        </div>
+    </section>
+</div>

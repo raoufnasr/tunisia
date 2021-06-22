@@ -1,33 +1,29 @@
 <div class="body">
     <div class="blc-left">
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/aleocatg.jpg" />
         </div>
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/mielCat.jpg" />
         </div>
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/epiceCateg.jpg" />
         </div>
-
     </div>
-
     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
         <div ngxSlickItem *ngFor="let slide of slides" class="slide">
             <img src="{{ slide.img }}" alt="" width="100%">
         </div>
     </ngx-slick-carousel>
-
     <div class="blc-right">
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/huileCatg.jpg" />
         </div>
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/datecateg.jpg" />
         </div>
         <div class="image">
-            <img class="img" src="../../../../assets/img/cat.jpg" />
+            <img class="img" src="../../../../assets/categories/vincatg.jpg" />
         </div>
-
     </div>
 </div>

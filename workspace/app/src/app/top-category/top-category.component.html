@@ -1,46 +1,13 @@
 <div>
-    <div class="top-category ">
+    <div class="top-category " *ngFor="let categorie of listCategory">
         <div class="cover-img">
             <div class="image">
-                <img default="../../assets/img/miel.jpg" src="../../assets/img/miel.jpg" />
+                <img default="../../assets/img/miel.jpg" src="{{config.apiUrl}}{{categorie.image}}" />
             </div>
         </div>
         <div class="description">
-            <h1 class="title"> First featurette heading. It'll blow your mind. </h1>
-            <p class="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. </p>
-        </div>
-    </div>
-    <div class="top-category ">
-        <div class="cover-img">
-            <div class="image">
-                <img default="../../assets/img/miel.jpg" src="../../assets/img/miel.jpg" />
-            </div>
-        </div>
-        <div class="description">
-            <h1 class="title"> First featurette heading. It'll blow your mind. </h1>
-            <p class="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. </p>
-        </div>
-    </div>
-    <div class="top-category ">
-        <div class="cover-img">
-            <div class="image">
-                <img default="../../assets/img/miel.jpg" src="../../assets/img/miel.jpg" />
-            </div>
-        </div>
-        <div class="description">
-            <h1 class="title"> First featurette heading. It'll blow your mind. </h1>
-            <p class="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. </p>
-        </div>
-    </div>
-    <div class="top-category ">
-        <div class="cover-img">
-            <div class="image">
-                <img default="../../assets/img/miel.jpg" src="../../assets/img/miel.jpg" />
-            </div>
-        </div>
-        <div class="description">
-            <h1 class="title"> First featurette heading. It'll blow your mind. </h1>
-            <p class="text">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. </p>
+            <h1 class="title"> {{categorie.nom}} </h1>
+            <p class="text">{{categorie.description}}</p>
         </div>
     </div>
 </div>

@@ -1,46 +1,67 @@
 .register {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: calc(100vh - 158px);
-	height: 100%;
-	.registerContent {
-		padding: 0 0 30px 0;
-		box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
-		.imageBlc {
-			width: 400px;
-			height: 500px;
-			overflow: hidden;
-			display: block;
-			margin: AUTO;
-			margin-right: 20px;
-		}
-		h1 {
-			text-align: center;
-			font-size: 25px;
-			padding: 20px 0 0 0;
-			color: #1aa6c5;
-			font-family: 'Roboto';
-		}
-		.form {
-			display: block;
-			margin: 20px;
-			.form-row {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				grid-column-gap: 25px;
-			}
-			.inputblc {
-				margin: 10px 0;
-			}
-			.btn {
-				width: 200px;
-				margin: 0 auto;
-				display: block;
-				border-radius: 5px;
-				background-color: #1aa6c5;
-				border-color: #1aa6c5;
-			}
-		}
-	}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 158px);
+    height: 100%;
+    .registerContent {
+        padding: 0 0 30px 0;
+        box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+        .imageBlc {
+            width: 400px;
+            height: 500px;
+            overflow: hidden;
+            display: block;
+            margin: AUTO;
+            margin-right: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 25px;
+            padding: 20px 0 0 0;
+            color: #1aa6c5;
+            font-family: 'Roboto';
+        }
+        .form {
+            display: block;
+            margin: 20px;
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 25px;
+            }
+            .inputblc {
+                margin: 10px 0;
+            }
+            .btn {
+                width: 200px;
+                margin: 0 auto;
+                display: block;
+                border-radius: 5px;
+                margin-top: 30px;
+                &.active {
+                    background-color: #1aa6c5;
+                    border-color: #1aa6c5;
+                    cursor: pointer;
+                }
+                &.disable {
+                    background-color: #636176;
+                    border-color: #636176;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .register {
+        .registerContent {
+            .form {
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
 }

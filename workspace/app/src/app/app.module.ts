@@ -20,6 +20,11 @@ import { FavorisComponent } from './favoris/favoris.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { DetailCategoryComponent } from './detail-category/detail-category.component';
 import { ProfilComponent } from './profil/profil.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ProductComponent } from './product/product.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -38,16 +43,20 @@ import { ProfilComponent } from './profil/profil.component';
     FavorisComponent,
     CategorieComponent,
     DetailCategoryComponent,
-    ProfilComponent
+    ProfilComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     SlickCarouselModule,
-    NgbTabsetModule
+    Ng2SearchPipeModule,
+    NgbTabsetModule, HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

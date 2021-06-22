@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { ProduitService } from '../_services/produit.service';
 
 @Component({
   selector: 'app-detail-category',
@@ -6,43 +9,46 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-category.component.scss']
 })
 export class DetailCategoryComponent implements OnInit {
-
-  slides = [
-    { img: "https://via.placeholder.com/600.png/09f/fff" },
-    { img: "https://via.placeholder.com/600.png/021/fff" },
-    { img: "https://via.placeholder.com/600.png/321/fff" },
-    { img: "https://via.placeholder.com/600.png/422/fff" },
-    { img: "https://via.placeholder.com/600.png/654/fff" }
-  ];
-  slideConfig = { "slidesToShow": 4, "slidesToScroll": 4 };
-  constructor() { }
+  listProduit;
+  paramCategorytId;
+  public config = {
+    apiUrl: environment.url
+  };
+  constructor(
+    private produitService: ProduitService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.paramCategorytId = params.get('id');
+    });
+    if (this.paramCategorytId) {
+      this.getProduitByCategory();
+    }
+
   }
 
-  addSlide() {
-    this.slides.push({ img: "http://placehold.it/350x150/777777" })
+  getProduitByCategory() {
+    const body = { id: this.paramCategorytId }
+    this.produitService.getProduitByCategory(body).subscribe(res => {
+
+      this.listProduit = res.result;
+      this.listProduit.forEach(element => {
+        let obj = JSON.parse(element.image);
+        element.image = obj;
+
+      });
+
+    },
+      err => console.log(err))
   }
 
-  removeSlide() {
-    this.slides.length = this.slides.length - 1;
-  }
+  goTo(element) {
+    /* { queryParams: { categorie: state.url } */
 
-  slickInit(e) {
-    console.log('slick initialized');
+    this.router.navigate(['/product/', element])
   }
-
-  breakpoint(e) {
-    console.log('breakpoint');
-  }
-
-  afterChange(e) {
-    console.log('afterChange');
-  }
-
-  beforeChange(e) {
-    console.log('beforeChange');
-  }
-
 
 }

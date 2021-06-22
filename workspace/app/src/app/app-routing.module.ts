@@ -5,6 +5,7 @@ import { CategorieComponent } from './categorie/categorie.component';
 import { DetailCategoryComponent } from './detail-category/detail-category.component';
 import { FavorisComponent } from './favoris/favoris.component';
 import { LoginComponent } from './login/login.component';
+import { ProductComponent } from './product/product.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -27,10 +28,13 @@ const routes: Routes = [
     path: 'categories', component: CategorieComponent
   },
   {
-    path: 'detail-category', component: DetailCategoryComponent
+    path: 'detail-category/:id', component: DetailCategoryComponent
   },
   {
     path: 'profil', component: ProfilComponent
+  },
+  {
+    path: 'product/:id', component: ProductComponent
   },
 
 ];

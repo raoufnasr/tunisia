@@ -1,40 +1,49 @@
 .favoris {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: calc(100vh - 158px);
-	height: 100%;
-	.registerContent {
-		box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
-		.title {
-			font-size: 23px;
-			padding: 20px 0 0 20px;
-			text-align: center;
-			color: #1aa6c5;
-			font-family: 'Roboto';
-		}
-		.card {
-			margin: 15px;
-			border: 1px solid #dadadada;
-			box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%),
-				0 8px 10px -5px rgb(0 0 0 / 20%);
-			border-radius: 10px;
-			.card-img-top {
-				width: 100%;
-			}
-			.card-body {
-				.card-title {
-					background-image: url('../../assets/img/like.png');
-					background-repeat: no-repeat;
-					background-position: 92% 50%;
-					background-size: 30px auto;
-					height: 30px;
-					color: #1aa6c5;
-				}
-				.card-text {
-					color: #636176;
-				}
-			}
-		}
-	}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 158px);
+    height: 100%;
+    .registerContent {
+        box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+        .title {
+            font-size: 23px;
+            padding: 20px 0 0 20px;
+            text-align: center;
+            color: #1aa6c5;
+            font-family: 'Roboto';
+        }
+        .card {
+            margin: 15px;
+            border: 1px solid #dadadada;
+            box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+            border-radius: 10px;
+            .card-img-top {
+                width: 100%;
+            }
+            .card-body {
+                .card-title {
+                    background-image: url('../../assets/img/like.png');
+                    background-repeat: no-repeat;
+                    background-position: 92% 50%;
+                    background-size: 30px auto;
+                    height: 30px;
+                    color: #1aa6c5;
+                }
+                .card-text {
+                    color: #636176;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .favoris {
+        .registerContent {
+            .card-group {
+                flex-direction: column;
+            }
+        }
+    }
 }
