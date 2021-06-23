@@ -1,13 +1,15 @@
 <div class="profil">
     <div class="registerContent container ">
         <h1>Mon Profil</h1>
-        <div class="blcImage"> <img class="card-img-top" src="../../../../assets/img/avatar.jpg" alt="Card image cap">
+        <div class="blcImage"> <img class="card-img-top" [src]="currentClient.avatar?config.apiUrl+currentClient.avatar:imgPreview" alt="Card image cap">
             <div class="blcUpload">
                 <img class="camera" src="../../../../assets/img/camera.png" alt="cammera">
+                <input class="file" type="file" (change)="handleFileInput($event.target.files)">
             </div>
         </div>
         <div class="blcEdit">
             <img class="edit" src="../../../../assets/img/edit.svg" alt="cammera">
+
         </div>
         <form class="form" [formGroup]="registerForm">
             <div class="form-row">

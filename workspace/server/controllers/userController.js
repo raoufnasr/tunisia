@@ -106,9 +106,9 @@ exports.newUtilisateur = (req, res) => {
         if (err) console.log("Error get list : %s", err);
         /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
         if (input.avatar) {
-            let avatar = input.avatar.split(';base64,').pop();
-            var avatarName = Date.now() + '.png'
-            fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
+            let avatar = input.avatar;
+
+            fs.writeFile('./uploads/' + avatar, function(err, file) {
                 console.log('File created');
             });
         }
@@ -153,9 +153,9 @@ exports.UpdateProfile = (req, res, next) => {
     if (req.tokend_decoded.id) {
         input.id = req.tokend_decoded.id;
         avatarName = '';
-        if (input.avatar && !input.avatar.includes('.png')) {
-            let avatar = input.avatar.split(';base64,').pop();
-            var avatarName = Date.now() + '.png';
+        if (input.avatar) {
+            let avatar = input.avatar.split(';base64,');
+            var avatarName = avatar;
             fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
 
             });

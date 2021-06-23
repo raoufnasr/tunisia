@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
@@ -11,6 +12,12 @@ export class ProfilComponent implements OnInit {
   registerForm: FormGroup;
   role: string;
   currentClient;
+  fileToUpload: any;
+  avatar;
+  public config = {
+    apiUrl: environment.url
+  };
+  imgPreview = '../../assets/img/anonyme.png';
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
@@ -79,6 +86,23 @@ export class ProfilComponent implements OnInit {
       console.log(res),
       err => console.log(err)
     })
+  }
+
+  
+  handleFileInput(file: FileList, element) {
+    let formData = new FormData();
+    this.fileToUpload = file.item(0);
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.avatar = event.target.result;
+     
+    }
+    reader.readAsDataURL(this.fileToUpload);
+    formData.append('avatar', this.fileToUpload);
+    
+    this.registerForm.get('avatar').setValue(this.fileToUpload.name);
+    this.updateProfile();
+
   }
 
 }
