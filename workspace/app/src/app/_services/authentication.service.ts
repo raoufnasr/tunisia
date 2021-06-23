@@ -45,4 +45,9 @@ export class AuthenticationService {
     return this.http.post<any>(this.config.apiUrl + 'user/update',body)
       
   }
+
+  uploadImage(body){
+    return this.http.post<any>(this.config.apiUrl + 'user/addimages',body)
+    
+  }
 }

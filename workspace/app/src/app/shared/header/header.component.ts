@@ -52,7 +52,7 @@ subscription:Subscription;
 
 getConnection() {
   this.subscription = this.filterService.getAlerte().subscribe(message => {
-    console.log(message)
+ 
     if (message.text == "connected") {
       this.loggedIn=true;
     }

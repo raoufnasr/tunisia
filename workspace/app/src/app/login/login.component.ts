@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         else {
           this.message = res.message;
         }
-        console.log(res)
+        
       }, err => console.log(err)
     )
 

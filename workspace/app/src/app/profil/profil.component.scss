@@ -56,6 +56,9 @@
                 .inp {
                     margin-bottom: 20px;
                 }
+                 ::placeholder {
+                    text-transform: capitalize;
+                }
             }
             .btn {
                 background-color: #1aa6c5;

@@ -53,6 +53,7 @@ export class ProfilComponent implements OnInit {
         (data: any) => {
           this.role = JSON.parse(localStorage.getItem("role"));
           this.currentClient = data.client[0];
+          
           this.profilInfo(this.currentClient);
 
         },
@@ -63,7 +64,6 @@ export class ProfilComponent implements OnInit {
   }
 
   profilInfo($event) {
-    console.log($event)
     this.registerForm.setValue({
       nom: $event.nom ? $event.nom : '',
       prenom: $event.prenom ? $event.prenom : '',
@@ -83,7 +83,8 @@ export class ProfilComponent implements OnInit {
   updateProfile() {
     const body = this.registerForm.value;
     this.authService.UpdateProfile(body).subscribe(res => {
-      console.log(res),
+      this.getClient()
+      ,
       err => console.log(err)
     })
   }
@@ -101,6 +102,10 @@ export class ProfilComponent implements OnInit {
     formData.append('avatar', this.fileToUpload);
     
     this.registerForm.get('avatar').setValue(this.fileToUpload.name);
+    this.authService.uploadImage(formData).subscribe(res => {
+      
+
+    })
     this.updateProfile();
 
   }

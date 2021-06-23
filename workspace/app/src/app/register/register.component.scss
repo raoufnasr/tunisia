@@ -33,6 +33,9 @@
             .inputblc {
                 margin: 10px 0;
             }
+             ::placeholder {
+                text-transform: capitalize;
+            }
             .btn {
                 width: 200px;
                 margin: 0 auto;
