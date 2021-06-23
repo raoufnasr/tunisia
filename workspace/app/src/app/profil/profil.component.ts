@@ -89,7 +89,7 @@ export class ProfilComponent implements OnInit {
   }
 
   
-  handleFileInput(file: FileList, element) {
+  handleFileInput(file: FileList) {
     let formData = new FormData();
     this.fileToUpload = file.item(0);
     let reader = new FileReader();
