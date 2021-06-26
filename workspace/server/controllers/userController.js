@@ -152,16 +152,8 @@ exports.UpdateProfile = (req, res, next) => {
     var input = JSON.parse(JSON.stringify(req.body));
     if (req.tokend_decoded.id) {
         input.id = req.tokend_decoded.id;
-        avatarName = '';
-        if (input.avatar) {
-            let avatar = input.avatar.split(';base64,');
-            var avatarName = avatar;
-            fs.writeFile('./uploads/' + avatarName, avatar, { encoding: 'base64' }, function(err, file) {
 
-            });
-        } else {
-            avatarName = input.avatar
-        }
+
         pool.query("UPDATE users SET prenom = '" + input.prenom +
             "', nom = '" + input.nom +
             "', email = '" + input.email +
@@ -172,7 +164,7 @@ exports.UpdateProfile = (req, res, next) => {
             "' ,cp = '" + input.cp +
             "' ,ville = '" + input.ville +
             "' ,pays = '" + input.pays +
-            "',avatar = '" + avatarName +
+            "',avatar = '" + input.avatar +
             "' WHERE id = '" + input.id + "'",
             function(err, rows, fields) {
                 if (err) {
