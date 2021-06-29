@@ -1,9 +1,8 @@
-<div class=" header bg-danger pb-6">
+<div class=" header bg-info pb-6">
     <div class=" container-fluid">
         <div class=" header-body">
             <div class=" row align-items-center py-4 styl">
-
-                <div class=" text-right">
+                <div class=" text-right" (click)="openModal()">
                     <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"> Ajouter </a>
                 </div>
             </div>
@@ -58,16 +57,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" *dropdownMenu>
                                     <a href="javascript:void(0)" class="dropdown-item">
-                                  Action
+                                 Editer Catégorie
                                 </a>
 
                                     <a href="javascript:void(0)" class="dropdown-item">
-                                  Another action
+                                  Supprimer Catégorie
                                 </a>
 
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                  Something else here
-                                </a>
+
                                 </div>
                             </div>
                         </td>
@@ -82,4 +79,5 @@
             </nav>
         </div>
     </div>
+    <app-modal-category *ngIf="isModalCategory" [title]="title" [button]="button" [openModalCategory]="isModalCategory" (closeModalCategory)="closeCategory($event)"></app-modal-category>
 </div>

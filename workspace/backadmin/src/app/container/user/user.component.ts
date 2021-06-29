@@ -8,14 +8,14 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class UserComponent implements OnInit {
   listUser;
-  constructor(private userServive:UserService) { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
     this.getAllUser();
   }
 
   getAllUser(){
-    this.userServive.getAllUser().subscribe(res=>{console.log(res)
+    this.userService.getUser().subscribe(res=>{console.log(res)
      this.listUser =res.user; 
     },
     err=>{console.log(err)})

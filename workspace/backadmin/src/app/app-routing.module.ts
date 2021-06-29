@@ -9,17 +9,15 @@ import { PresentationComponent } from "./pages/presentation/presentation.compone
 import { CategoryComponent } from "./container/category/category.component";
 import { UserComponent } from "./container/user/user.component";
 import { ProduitComponent } from "./container/produit/produit.component";
+import { ModalCategoryComponent } from "./container/shared/modal-category/modal-category.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "presentation",
+    redirectTo: "examples/login",
     pathMatch: "full"
   },
-  {
-    path: "presentation",
-    component: PresentationComponent
-  },
+  
   {
     path: "",
     component: AdminLayoutComponent,
@@ -72,6 +70,7 @@ const routes: Routes = [
         path: "produit",
         component: ProduitComponent
       },
+    
 
     ]
   },
@@ -88,7 +87,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "dashboard"
+    redirectTo: "examples/login"
   }
 ];
 
