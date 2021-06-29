@@ -14,13 +14,10 @@ import { ModalCategoryComponent } from "./container/shared/modal-category/modal-
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "presentation",
+    redirectTo: "examples/login",
     pathMatch: "full"
   },
-  {
-    path: "presentation",
-    component: PresentationComponent
-  },
+  
   {
     path: "",
     component: AdminLayoutComponent,
@@ -73,10 +70,7 @@ const routes: Routes = [
         path: "produit",
         component: ProduitComponent
       },
-      {
-        path: "modal",
-        component: ModalCategoryComponent
-      },
+    
 
     ]
   },
@@ -93,7 +87,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "dashboard"
+    redirectTo: "examples/login"
   }
 ];
 
