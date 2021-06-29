@@ -31,7 +31,6 @@ listCategory;
 getAllCatagory(){
   this.CategoryService.getAllCategory().subscribe(res=>{console.log(res)
   this.listCategory=res.category;
-  console.log(this.listCategory)
   },
   err=>{console.log(err)})
 

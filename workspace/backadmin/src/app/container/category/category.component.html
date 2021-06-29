@@ -30,6 +30,7 @@
                         <th>date de création</th>
                         <th>date de modification</th>
                         <th>Active</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,9 +50,36 @@
                                 </span>
                             </label>
                         </td>
+                        <td class=" text-right">
+                            <div class="dropdown no-caret" dropdown [dropup]="'true'">
+                                <a aria-controls="dropdown-basic" class=" btn btn-sm btn-icon-only text-light dropdown-toggle" dropdownToggle href="javascript:void(0)" role="button">
+                                    <i class=" fas fa-ellipsis-v"> </i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" *dropdownMenu>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Action
+                                </a>
+
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Another action
+                                </a>
+
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Something else here
+                                </a>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class=" card-footer py-4">
+            <nav aria-label="...">
+                <pagination [totalItems]="2" class="justify-content-end mb-0" previousText="<i class='fas fa-angle-left'></i>" nextText="<i class='fas fa-angle-right'></i>">
+                </pagination>
+            </nav>
         </div>
     </div>
 </div>
