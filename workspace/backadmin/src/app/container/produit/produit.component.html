@@ -15,7 +15,7 @@
         <div class=" card-header border-0">
             <div class=" row">
                 <div class=" col-6">
-                    <h3 class=" mb-0">Liste produits</h3>
+                    <h3 class=" mb-0">Liste Produits</h3>
                 </div>
 
             </div>
@@ -30,6 +30,7 @@
                         <th>date de création</th>
                         <th>date de modification</th>
                         <th>Active</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +38,7 @@
                         <td class=" table-user"> {{product.id}}</td>
                         <td class=" table-user"><a class=" font-weight-bold" href="javascript:void(0)"> {{product.nom}}</a></td>
                         <td>
-                            <a class="description"> {{product.description}}</a>
+                            <a> {{product.description}}</a>
                         </td>
                         <td><span class=" text-muted"> {{product.createdAt |date:'MM/dd/yyyy'}} </span></td>
                         <td><span class=" text-muted">{{product.updatedAt |date:'MM/dd/yyyy'}} </span></td>
@@ -48,6 +49,27 @@
                                     data-label-on="Yes">
                                 </span>
                             </label>
+                        </td>
+                        <td class=" text-right">
+                            <div class="dropdown no-caret" dropdown [dropup]="'true'">
+                                <a aria-controls="dropdown-basic" class=" btn btn-sm btn-icon-only text-light dropdown-toggle" dropdownToggle href="javascript:void(0)" role="button">
+                                    <i class=" fas fa-ellipsis-v"> </i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" *dropdownMenu>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Action
+                                </a>
+
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Another action
+                                </a>
+
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                  Something else here
+                                </a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
