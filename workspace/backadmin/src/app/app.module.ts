@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { BsDropdownModule } from "ngx-bootstrap";
@@ -25,7 +25,8 @@ import { ModalCategoryComponent } from './container/shared/modal-category/modal-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
-    FormsModule,
+    ReactiveFormsModule,
+    /* FormsModule, */
     HttpClientModule,
     ComponentsModule,
     RouterModule,

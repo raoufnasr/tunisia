@@ -1,1 +1,37 @@
-<p>modal-category works!</p>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" (click)="Annuler()">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [FormGroup]="categoryForm" class=" needs-validation">
+                    <div>
+                        <div>
+                            <label class=" form-control-label" for="validationCustom01"> Nom </label>
+                            <input class=" form-control" id="validationCustom01" placeholder="Nom catégorie" formControlName="nom" type="text" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label class=" form-control-label" for="validationCustom03"> description </label>
+                            <textarea class=" form-control" id="validationCustom03" placeholder="description" formControlName="description" type="text">
+
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Annuler()">Annuler</button>
+                        <button type="submit" class="btn btn-primary" (click)=" create()">{{button}}</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

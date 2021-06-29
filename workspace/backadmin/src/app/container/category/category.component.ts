@@ -8,6 +8,9 @@ import { CategoryService } from 'src/app/_services/category.service';
 })
 export class CategoryComponent implements OnInit {
 listCategory;
+isModalCategory:boolean=false;
+title:string;
+button:string;
   constructor(
     private CategoryService:CategoryService,
   ) { }
@@ -34,6 +37,17 @@ getAllCatagory(){
   },
   err=>{console.log(err)})
 
+}
+
+openModal(){
+  this.isModalCategory=true;
+  this.title="Créer une nouvelle catégorie ";
+  this.button="Créer";
+
+}
+
+closeCategory($event){
+  this.isModalCategory=$event;
 }
 
 }

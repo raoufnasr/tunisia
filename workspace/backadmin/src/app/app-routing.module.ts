@@ -9,6 +9,7 @@ import { PresentationComponent } from "./pages/presentation/presentation.compone
 import { CategoryComponent } from "./container/category/category.component";
 import { UserComponent } from "./container/user/user.component";
 import { ProduitComponent } from "./container/produit/produit.component";
+import { ModalCategoryComponent } from "./container/shared/modal-category/modal-category.component";
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
       {
         path: "produit",
         component: ProduitComponent
+      },
+      {
+        path: "modal",
+        component: ModalCategoryComponent
       },
 
     ]

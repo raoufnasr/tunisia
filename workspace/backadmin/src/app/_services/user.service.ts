@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  getAllUser() {
+  getUser() {
     return this.http.get<any>(`${this.config.apiUrl}user/getAllUsers`);
   }
 }

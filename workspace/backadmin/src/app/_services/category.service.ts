@@ -15,4 +15,11 @@ export class CategoryService {
   getAllCategory() {
     return this.http.get<any>(`${this.config.apiUrl}category/getAll`);
   }
+
+
+  createCategory(formData) {
+    return this.http.post<any>(`${this.config.apiUrl}category/add`,formData);
+  }
+  
+
 }
