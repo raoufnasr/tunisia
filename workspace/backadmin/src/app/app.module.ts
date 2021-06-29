@@ -12,7 +12,6 @@ import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 import { PresentationModule } from "./pages/presentation/presentation.module";
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { CategoryComponent } from './container/category/category.component';
@@ -27,7 +26,6 @@ import { ModalCategoryComponent } from './container/shared/modal-category/modal-
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule, 
-    Ng2SearchPipeModule,
     HttpClientModule,
     ComponentsModule,
     RouterModule,
