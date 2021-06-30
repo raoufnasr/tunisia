@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CommentaireService {
 
   public config = {
     apiUrl: environment.url
@@ -13,8 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
 
-  getAllProduct() {
-    return this.http.get<any>(`${this.config.apiUrl}product/getAll`);
+  getAllCommentaire() {
+    return this.http.get<any>(`${this.config.apiUrl}commentaire/getAllCommentaire`);
   }
-
 }

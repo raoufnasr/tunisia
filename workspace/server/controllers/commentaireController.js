@@ -61,3 +61,18 @@ exports.getCommentaireByProduct = (req, res) => {
 
 
 }
+
+exports.getAllCommentaire = (req, res) => {
+    var input = JSON.parse(JSON.stringify(req.body));
+
+    Models.commentaires.findAndCountAll().then(data => {
+        return res.json({
+            success: true,
+            data: data
+        });
+    })
+
+
+
+
+}

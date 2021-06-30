@@ -20,6 +20,8 @@ import { ProduitComponent } from './container/produit/produit.component';
 import { ModalUserComponent } from './container/shared/modal-user/modal-user.component';
 import { ModalProductComponent } from './container/shared/modal-product/modal-product.component';
 import { ModalCategoryComponent } from './container/shared/modal-category/modal-category.component';
+import { LoginComponent } from './container/login/login.component';
+import { RegisterComponent } from './container/register/register.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,7 @@ import { ModalCategoryComponent } from './container/shared/modal-category/modal-
     TagInputModule,
     PresentationModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CategoryComponent, UserComponent, ProduitComponent, ModalUserComponent, ModalProductComponent, ModalCategoryComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CategoryComponent, UserComponent, ProduitComponent, ModalUserComponent, ModalProductComponent, ModalCategoryComponent, LoginComponent, RegisterComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

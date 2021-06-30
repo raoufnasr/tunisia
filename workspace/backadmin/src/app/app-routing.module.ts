@@ -10,12 +10,22 @@ import { CategoryComponent } from "./container/category/category.component";
 import { UserComponent } from "./container/user/user.component";
 import { ProduitComponent } from "./container/produit/produit.component";
 import { ModalCategoryComponent } from "./container/shared/modal-category/modal-category.component";
+import { LoginComponent } from "./container/login/login.component";
+import { RegisterComponent } from "./pages/examples/register/register.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "examples/login",
+    redirectTo: "login",
     pathMatch: "full"
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   },
   
   {
@@ -38,6 +48,7 @@ const routes: Routes = [
         path: "produit",
         component: ProduitComponent
       },
+   
        {
         path: "maps",
         loadChildren: "./pages/maps/maps.module#MapsModule"
@@ -59,7 +70,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "examples/login"
+    redirectTo: "login"
   }
 ];
 
