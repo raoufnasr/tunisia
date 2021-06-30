@@ -29,19 +29,12 @@ subscription:Subscription;
 
     this.location.onUrlChange(url=>{
       console.log(url)
-      $('#toggle').trigger('click');
-
+      /* $('#toggle').trigger('click'); */
+      $("#toggle").prop('checked', true).trigger("click");
 
     })
 
-  /*   $("#toggle").on('change', function() {
-      if ($(this).is(':checked')) {
-         this.switchStatus = true;
-          console.log('1111');
-        
-      }
-    
-  }); */
+
   
   }
 

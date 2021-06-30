@@ -102,49 +102,48 @@ exports.newUtilisateur = (req, res) => {
 
     var input = JSON.parse(JSON.stringify(req.body));
 
-    pool.query("SELECT * FROM users", function(err, rows) {
-        if (err) console.log("Error get list : %s", err);
-        /*   var id = (rows.length > 0) ? rows[rows.length - 1].id : rows.length; */
-        if (input.avatar) {
-            let avatar = input.avatar;
+    var data = {
+        email: input.email,
+        prenom: input.prenom,
+        nom: input.nom,
+        password: input.password,
+        username: input.username,
+        avatar: input.avatar,
+        role: input.role,
+        adresse: input.adresse,
+        cp: input.cp,
+        pays: input.pays,
+        ville: input.ville,
 
-            fs.writeFile('./uploads/' + avatar, function(err, file) {
-                console.log('File created');
+    };
+
+    pool.query("SELECT * FROM users WHERE email = '" + input.email + "'", function(err, rows) {
+        if (err) console.log("Error get list : %s", err);
+        if (rows.length > 0) {
+            res.json({
+                success: false,
+                message: "email existe déja"
+            });
+        } else {
+            pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
+                if (err) {
+                    console.log("Error in Inserting Data : %s", err);
+                    res.json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    pool.query("SELECT * FROM users", function(err, rows) {
+                        if (err) console.log("Error Editing list : %s", err);
+                        res.json({
+                            utilisateurs: rows,
+                            success: true,
+                            message: 'utilisateur crée avec succes!'
+                        });
+                    });
+                }
             });
         }
-
-        var data = {
-            email: input.email,
-            prenom: input.prenom,
-            nom: input.nom,
-            password: input.password,
-            username: input.username,
-            avatar: input.nom ? avatarName : '',
-            role: input.role,
-            adresse: input.adresse,
-            cp: input.cp,
-            pays: input.pays,
-            ville: input.ville,
-
-        };
-        pool.query("INSERT INTO users set ?", data, function(err, rows, fields) {
-            if (err) {
-                console.log("Error in Inserting Data : %s", err);
-                res.json({
-                    success: false,
-                    message: err
-                });
-            } else {
-                pool.query("SELECT * FROM users", function(err, rows) {
-                    if (err) console.log("Error Editing list : %s", err);
-                    res.json({
-                        utilisateurs: rows,
-                        success: true,
-                        message: 'utilisateur crée avec succes!'
-                    });
-                });
-            }
-        });
     });
 };
 
