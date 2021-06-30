@@ -6,6 +6,8 @@ const passportConfig = require('../config/passport');
 
 router.post('/create', passportConfig.verifyToken, commentaireController.createCommentaire);
 router.post('/getCommentaireByProduct', commentaireController.getCommentaireByProduct);
+router.get('/getAllCommentaire', commentaireController.getAllCommentaire);
+
 
 
 module.exports = router;

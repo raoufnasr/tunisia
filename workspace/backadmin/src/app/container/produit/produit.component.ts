@@ -15,7 +15,7 @@ export class ProduitComponent implements OnInit {
   }
 
   getAllProduct(){
-    this.productServive.gtAllProduct().subscribe(res=>{console.log(res)
+    this.productServive.getAllProduct().subscribe(res=>{console.log(res)
      this.listProduct=res.product; 
     },
     err=>{console.log(err)})

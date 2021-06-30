@@ -1,55 +1,61 @@
 import { Component, OnInit } from "@angular/core";
-import Chart from "chart.js";
+import { CategoryService } from "src/app/_services/category.service";
+import { CommentaireService } from "src/app/_services/commentaire.service";
+import { ProductService } from "src/app/_services/product.service";
+import { UserService } from "src/app/_services/user.service";
 
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from "../../../variables/charts";
+
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "dashboard.component.html"
 })
 export class DashboardComponent implements OnInit {
-  public datasets: any;
-  public data: any;
-  public salesChart;
-  public clicked: boolean = true;
-  public clicked1: boolean = false;
+  nbeProduct;
+  nbeCategory;
+  nbeCommentaire;
+  nbreUser;
 
-  constructor() {}
+  constructor(private productService:ProductService,
+    private CategoryService:CategoryService,
+    private commentaireService:CommentaireService,
+    private userService:UserService) {}
 
   ngOnInit() {
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
-
-    var chartOrders = document.getElementById("chart-bars");
-
-    parseOptions(Chart, chartOptions());
-
-    var ordersChart = new Chart(chartOrders, {
-      type: "bar",
-      options: chartExample2.options,
-      data: chartExample2.data
-    });
-
-    var chartSales = document.getElementById("chart-sales-dark");
-
-    this.salesChart = new Chart(chartSales, {
-      type: "line",
-      options: chartExample1.options,
-      data: chartExample1.data
-    });
+    this.getAllProduct();
+    this.getAllCatagory();
+    this.getAllCommentaire();
+    this.getAllUser();
+  }
+  
+  getAllProduct(){
+    this.productService.getAllProduct().subscribe(res=>{
+     this.nbeProduct=res.product.length; 
+    },
+    err=>{console.log(err)})
+  
+  }
+  getAllCatagory(){
+    this.CategoryService.getAllCategory().subscribe(res=>{
+    this.nbeCategory=res.category.length;
+    },
+    err=>{console.log(err)})
+  
+  }
+  getAllCommentaire(){
+    this.commentaireService.getAllCommentaire().subscribe(res=>{
+    this.nbeCommentaire=res.data.count;
+    },
+    err=>{console.log(err)})
+  
+  }
+  getAllUser(){
+    this.userService.getUser().subscribe(res=>{
+     this.nbreUser =res.user.length; 
+    },
+    err=>{console.log(err)})
+  
   }
 
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
-  }
+ 
 }
