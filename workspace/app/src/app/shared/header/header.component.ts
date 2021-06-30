@@ -29,7 +29,6 @@ subscription:Subscription;
 
     this.location.onUrlChange(url=>{
       console.log(url)
-      /* $('#toggle').trigger('click'); */
       $("#toggle").prop('checked', true).trigger("click");
 
     })
