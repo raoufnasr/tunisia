@@ -27,38 +27,6 @@ const routes: Routes = [
         loadChildren: "./pages/dashboards/dashboards.module#DashboardsModule"
       },
       {
-        path: "components",
-        loadChildren: "./pages/components/components.module#ComponentsModule"
-      },
-      {
-        path: "forms",
-        loadChildren: "./pages/forms/forms.module#FormsModules"
-      },
-      {
-        path: "tables",
-        loadChildren: "./pages/tables/tables.module#TablesModule"
-      },
-      {
-        path: "maps",
-        loadChildren: "./pages/maps/maps.module#MapsModule"
-      },
-      {
-        path: "widgets",
-        loadChildren: "./pages/widgets/widgets.module#WidgetsModule"
-      },
-      {
-        path: "charts",
-        loadChildren: "./pages/charts/charts.module#ChartsModule"
-      },
-      {
-        path: "calendar",
-        loadChildren: "./pages/calendar/calendar.module#CalendarModule"
-      },
-      {
-        path: "examples",
-        loadChildren: "./pages/examples/examples.module#ExamplesModule"
-      },
-      {
         path: "category",
         component: CategoryComponent
       },
@@ -69,6 +37,10 @@ const routes: Routes = [
       {
         path: "produit",
         component: ProduitComponent
+      },
+       {
+        path: "maps",
+        loadChildren: "./pages/maps/maps.module#MapsModule"
       },
     
 
