@@ -1,13 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { UserService } from "src/app/_services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "login.component.html"
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   focus;
   focus1;
   loginForm:FormGroup;
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(body).subscribe(
       res => {
         if (res.success) {
-          this.router.navigate(['/'])
+          this.router.navigate(['/dashboards/dashboard'])
 
         }
         else {
@@ -56,4 +58,5 @@ export class LoginComponent implements OnInit {
     )
 
   }
+
 }
