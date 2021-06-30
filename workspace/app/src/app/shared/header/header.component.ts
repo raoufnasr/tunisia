@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SubscriptionService } from 'src/app/_services/subscription.service';
-
+import {Location} from '@angular/common';
 import { AuthenticationService } from '../../_services/authentication.service';
+declare var $ :any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,14 +16,26 @@ loggedIn:boolean=false;
 role:string;
 currentClient;
 subscription:Subscription;
+ switchStatus:boolean = false;
   constructor(
     private authService:AuthenticationService,
     private router:Router,
-    private filterService:SubscriptionService
+    private filterService:SubscriptionService,
+    private location:Location
   ) { }
 
   ngOnInit(): void {
     this.getConnection();
+
+    this.location.onUrlChange(url=>{
+      console.log(url)
+      /* $('#toggle').trigger('click'); */
+      $("#toggle").prop('checked', true).trigger("click");
+
+    })
+
+
+  
   }
 
   getClient() {
@@ -62,5 +76,8 @@ getConnection() {
 ngOnDestroy() {
   this.subscription.unsubscribe();
 }
+
+
+
 
 }
